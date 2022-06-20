@@ -1,9 +1,28 @@
-export default class PostgreSQL { 
-  constructor(server, user, pass) {
+import { Client } from 'pg';
+
+export default class MySQL { 
+  constructor(host, user, pass, database) {
     this.table = '';
     this.collums = '*';
     this.where = ``;
-    this.query = `SELECT ${this.collumns} FROM ${this.table}`;
+    this.query_string = `SELECT ${this.collumns} FROM ${this.table}`;
+
+    this.client = new Client({
+        host,
+        user,
+        password,
+        database
+    });
+
+    this.client.connect()
+  }
+
+  query() {
+    this.client.query(this.query_string, (error, results) => {
+      if (error) throw error;
+      this.client.end();
+      return results;
+    });
   }
 
   select(collumns) {
@@ -28,9 +47,9 @@ export default class PostgreSQL {
       conditions += `${key} ${operator} ${value}, `;
     });
 
-    this.query += where;
+    this.query_string += where;
 
-    return this;
+    return this || this.query();
   }
 
   join(table, object) {
@@ -41,9 +60,9 @@ export default class PostgreSQL {
       relationship += `${this.table}.${key} = ${table}.${value}`;
     });
 
-    this.query += join;
+    this.query_string += join;
 
-    return this;
+    return this || this.query();
   }
 
   left_join(table, object) {
@@ -54,9 +73,9 @@ export default class PostgreSQL {
       relationship += `${this.table}.${key} = ${table}.${value}`;
     });
 
-    this.query += join;
+    this.query_string += join;
 
-    return this;
+    return this || this.query();
   }
 
   right_join(table, object) {
@@ -67,9 +86,9 @@ export default class PostgreSQL {
       relationship += `${this.table}.${key} = ${table}.${value}`;
     });
 
-    this.query += join;
+    this.query_string += join;
 
-    return this;
+    return this || this.query();
   }
 
   outer_join(table, object) {
@@ -80,8 +99,8 @@ export default class PostgreSQL {
       relationship += `${this.table}.${key} = ${table}.${value}`;
     });
 
-    this.query += join;
+    this.query_string += join;
 
-    return this;
+    return this || this.query();
   }
 }
