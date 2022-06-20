@@ -19,7 +19,7 @@ Read table from database:
 ```javascript
   mysql
     .select('collumns')
-    .from('table')
+    .from('table');
 ```
 
 Read table from database with clausules:
@@ -27,7 +27,7 @@ Read table from database with clausules:
   mysql
     .select('collumns')
     .from('table')
-    .where('collumn', 'operator', 'value')
+    .where('collumn', 'operator', 'value');
 ```
 
 Read table from database with INNER JOIN:
@@ -37,7 +37,7 @@ Read table from database with INNER JOIN:
     .from('table')
     .join('table2', {
       foo: 'bar'
-    })
+    });
 ```
 
 Read table from database with LEFT JOIN:
@@ -47,7 +47,7 @@ Read table from database with LEFT JOIN:
     .from('table')
     .left_join('table2', {
       foo: 'bar'
-    })
+    });
 ```
 
 Read table from database with RIGHT JOIN:
