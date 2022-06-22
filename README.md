@@ -74,4 +74,4 @@ Read table from database with OUTER FULL JOIN:
 
 MIT License.
 
-**Made with love by while_**
+**Made with love by John.**
