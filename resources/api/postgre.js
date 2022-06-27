@@ -18,11 +18,11 @@ export default class MySQL {
   }
 
   query() {
-    this.client.query(this.query_string, (error, results) => {
-      if (error) throw error;
-      this.client.end();
-      return results;
-    });
+    this.client.query(this.query_string)
+      .then(res => {
+        return res.rows[0];
+      })
+      .catch(err => { throw err });
   }
 
   select(collumns) {

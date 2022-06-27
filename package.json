@@ -1,6 +1,6 @@
 {
-  "name": "africa",
-  "version": "1.5.1",
+  "name": "africa.js",
+  "version": "1.5.4",
   "description": "A fulfilled query builder that runs over SQL Server, SQLite, MySQL and PostgreSQL.",
   "keywords": [
     "africa",
