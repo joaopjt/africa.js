@@ -1,4 +1,4 @@
-# África
+# :earth_africa: África.js
 África is a fulfilled query builder that runs over SQL Server, SQLite, MySQL and PostgreSQL.
 
 ## Getting Started
