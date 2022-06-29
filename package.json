@@ -1,14 +1,15 @@
 {
   "name": "africa.js",
-  "version": "1.6.4",
-  "description": "A fulfilled query builder that runs over SQL Server, SQLite, MySQL and PostgreSQL.",
+  "version": "1.6.5",
+  "description": "A fulfilled query builder that runs over SQL Server, SQLite, MySQL, MariaDB and PostgreSQL.",
   "keywords": [
     "africa",
     "query builder",
     "mysql",
     "postgre",
     "sqlserver",
-    "sqlite"
+    "sqlite",
+    "mariadb"
   ],
   "main": "dist/index.min.js",
   "repository": "https://github.com/joaopjt/africa.git",
@@ -25,8 +26,6 @@
     "rollup": "^0.66.6",
     "rollup-plugin-babel": "3",
     "rollup-plugin-babel-minify": "^6.1.1",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-uglify": "^6.0.0"
   },
   "dependencies": {

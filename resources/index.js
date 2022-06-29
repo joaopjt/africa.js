@@ -1,6 +1,6 @@
 import MySQL from './api/mysql';
 import MariaDB from './api/mariadb';
-import PostgreSQL from './api/postgresql';
+import PostgreSQL from './api/postgre';
 import SQLite from './api/sqlite';
 import SQLServer from './api/sqlserver';
 
@@ -209,9 +209,9 @@ export default class Africa {
     return this;
   }
 
-  null(null = true) {
+  null(n = true) {
     this.spacer();
-    if (!null) this.collumn_string += 'NOT ';
+    if (!n) this.collumn_string += 'NOT ';
 
     this.collumn_string += `NULL`;
 
@@ -261,8 +261,4 @@ export default class Africa {
   }
 }
 
-export MySQL;
-export MariaDB;
-export PostgreSQL;
-export SQLite;
-export SQLServer;
+export { MySQL, MariaDB, PostgreSQL, SQLite, SQLServer };

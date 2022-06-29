@@ -12,11 +12,16 @@ export default class MariaDB {
       user,
       connectionLimit: 1
     });
+    this.conn = null;;
 
+    this.connect();
+  }
+
+  async connect() {
     this.conn = await this.pool.getConnection();
   }
 
-  query() {
+  async query() {
     let results = null;
 
     try {

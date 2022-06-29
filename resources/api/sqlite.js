@@ -8,6 +8,11 @@ export default class SQLite {
     this.where = ``;
     this.query_string = `SELECT ${this.collumns} FROM ${this.table}`;
 
+    this.db = null;
+    this.connect();
+  }
+
+  async connect() {
     this.db = await open({ filename: database_filename, driver: sqlite.Database });
   }
 
