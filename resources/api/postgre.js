@@ -31,12 +31,62 @@ export default class MySQL {
     return this;
   }
 
+  create(table_name, collums_object) {
+    let collumns = '';
+    if (!table_name) throw new Error('Expected table name but none was given.');
+
+    collumns_object.forEach((collumn, collumn_type) => {
+      collumns += `${collumn} ${collumn_type},`;
+    });
+
+    this.query_string = `CREATE TABLE ${table_name} (${collumns})`;
+
+    return this.query();
+  }
+
+  insert(table_name, values_array) {
+    let values = '';
+
+    values_array.forEach((v, i) => {
+      let values = '';
+      let phrase = `(${values})`;
+
+      v.forEach((value, i) => {
+        values += `${value},`;
+
+        if (i+1 < v.lenght) values += ' ';
+      });
+
+      if (i+1 < values_array.lenght) values += ', ';
+    });
+
+    this.query_string = `INSERT INTO ${table_name} VALUES ${values}`;
+
+    return this.query();
+  }
+
+  drop(table_name) {
+    if (!table_name) throw new Error('Expected table name but none was given.');
+
+    this.query_string = `DROP TABLE ${table_name}`;
+
+    return this.query();
+  }
+
+  delete(table_name) {
+    if (collumns) this.collums = collumns;
+
+    this.query_string = `DELETE FROM ${table_name}`;
+
+    return this || this.query();
+  }
+
   from(table) {
     if (!table) throw new Error('Expected table name but none was given.');
 
     this.table = table;
 
-    return this; 
+    return this || this.query();
   }
 
   where(query) {

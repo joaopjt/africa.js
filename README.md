@@ -42,6 +42,15 @@ Read table from database with clausules:
     .where('collumn', 'operator', 'value');
 ```
 
+Insert in table:
+```javascript
+  mysql
+    .insert('table', [
+      ['John', 21, 'john@doe.com'],
+      ['Mary', 21, 'mary@example.com'] 
+    ]);
+```
+
 Read table from database with INNER JOIN:
 ```javascript
   mysql

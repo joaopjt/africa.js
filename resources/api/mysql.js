@@ -46,6 +46,27 @@ export default class MySQL {
     return this.query();
   }
 
+  insert(table_name, values_array) {
+    let values = '';
+
+    values_array.forEach((v, i) => {
+      let values = '';
+      let phrase = `(${values})`;
+
+      v.forEach((value, i) => {
+        values += `${value},`;
+
+        if (i+1 < v.lenght) values += ' ';
+      });
+
+      if (i+1 < values_array.lenght) values += ', ';
+    });
+
+    this.query_string = `INSERT INTO ${table_name} VALUES ${values}`;
+
+    return this.query();
+  }
+
   drop(table_name) {
     if (!table_name) throw new Error('Expected table name but none was given.');
 
@@ -67,7 +88,7 @@ export default class MySQL {
 
     this.table = table;
 
-    return this; 
+    return this || this.query(); 
   }
 
   where(query) {
