@@ -3,17 +3,29 @@
 
 ## Getting Started
 
-The API for following the SQL syntax, gets the same API chart for every database client.
+The API follows the SQL syntax, so we get the same API methods for every database client.
 
-Lets start with the connection over a MySQL client:
+Lets start with the connection over a MySQL client as a example:
 
 ```javascript
-import MySQL from 'mysql';
+import africa from 'africa.js';
+import { MySQL } from 'africa.js';
 
-const mysql = new MySQL('localhost', 'root', 'root', 'joaopjt@github');
+const mysql = new MySQL('localhost', 'root', 'root', 'password');
 ```
 
 ## Queries Avaiable
+
+Create a new table:
+```javascript
+  mysql
+    .create('table_name', {
+      'id': africa.int().null(false).primary_key(),
+      'name': africa.varchar(255).null(false), // default value of varchar()
+      'age': africa.varchar(255).null(false),
+      'email': africa.varchar(255).null(false),
+    });
+```
 
 Read table from database:
 ```javascript
@@ -74,4 +86,4 @@ Read table from database with OUTER FULL JOIN:
 
 MIT License.
 
-**Made with love by John.**
+**Made with :hearts: by John.**

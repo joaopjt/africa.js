@@ -27,7 +27,7 @@ export default class Africa {
     return this;
   }
 
-  varchar(size) {
+  varchar(size = 255) {
     this.spacer();
     this.collumn_string += `varchar(${size})`;
 
