@@ -1,5 +1,5 @@
-# África
-África is a fulfilled query builder that runs over SQL Server, SQLite, MySQL and PostgreSQL.
+# :earth_africa: África
+África is a fulfilled query builder that runs over SQL Server, SQLite, MySQL, MariaDB and PostgreSQL.
 
 ## Getting Started
 
