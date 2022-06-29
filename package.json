@@ -1,6 +1,6 @@
 {
   "name": "africa",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "A fulfilled query builder that runs over SQL Server, SQLite, MySQL and PostgreSQL.",
   "keywords": [
     "africa",
@@ -30,9 +30,11 @@
     "rollup-plugin-uglify": "^6.0.0"
   },
   "dependencies": {
+    "mariadb": "^3.0.0",
     "mssql": "^8.1.2",
     "mysql": "^2.18.1",
     "pg": "^8.7.3",
-    "sqlite": "^4.1.1"
+    "sqlite": "^4.1.1",
+    "sqlite3": "^5.0.8"
   }
 }

@@ -1,18 +1,31 @@
-import { open } from 'sqlite';
-import sqlite from 'sqlite3';
+import mariadb from 'mariadb';
 
-export default class SQLite { 
-  constructor(database_filename) {
+export default class MariaDB { 
+  constructor(host, user) {
     this.table = '';
     this.collums = '*';
     this.where = ``;
     this.query_string = `SELECT ${this.collumns} FROM ${this.table}`;
 
-    this.db = await open({ filename: database_filename, driver: sqlite.Database });
+    this.pool = mariadb.createPool({
+      host,
+      user,
+      connectionLimit: 1
+    });
+
+    this.conn = await this.pool.getConnection();
   }
 
-  async query() {
-    return await this.db.exec(this.query_string);
+  query() {
+    let results = null;
+
+    try {
+      results = await this.conn.query(this.query_string);
+    } catch(err) {
+      throw err;
+    }
+
+    return results;
   }
 
   select(collumns) {
@@ -81,7 +94,7 @@ export default class SQLite {
 
     this.query_string += join;
 
-    return this;
+    return this || this.query();
   }
 
   left_join(table, object) {
@@ -94,7 +107,7 @@ export default class SQLite {
 
     this.query_string += join;
 
-    return this;
+    return this || this.query();
   }
 
   right_join(table, object) {
@@ -107,7 +120,7 @@ export default class SQLite {
 
     this.query_string += join;
 
-    return this;
+    return this || this.query();
   }
 
   outer_join(table, object) {
@@ -120,6 +133,6 @@ export default class SQLite {
 
     this.query_string += join;
 
-    return this;
+    return this || this.query();
   }
 }

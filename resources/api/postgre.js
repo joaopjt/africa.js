@@ -19,8 +19,10 @@ export default class MySQL {
 
   query() {
     this.client.query(this.query_string, (error, results) => {
-      if (error) throw error;
       this.client.end();
+
+      if (error) throw error;
+
       return results;
     });
   }
