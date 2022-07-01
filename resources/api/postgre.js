@@ -1,7 +1,7 @@
 import { Client } from 'pg';
 
-export default class MySQL { 
-  constructor(host, user, pass, database) {
+export default class PostgreSQL { 
+  constructor(host, user, password, database) {
     this.table = '';
     this.collums = '*';
     this.where = ``;
@@ -62,7 +62,7 @@ export default class MySQL {
 
     this.query_string = `INSERT INTO ${table_name} VALUES ${values}`;
 
-    return this.query();
+    return this || this.query();
   }
 
   drop(table_name) {
@@ -89,15 +89,24 @@ export default class MySQL {
     return this || this.query();
   }
 
+  where_is_allocated() {
+    if (this.query_string.search('WHERE')) return true;
+  }
+
   where(query) {
     let conditions = '';
     const where = ` WHERE ${conditions}`;
 
+    if (this.where_is_allocated()) this.query_string += 'AND'
     Object.keys(query).forEach((key, operator, value) => {
       conditions += `${key} ${operator} ${value}, `;
     });
 
-    this.query_string += where;
+    if (!this.where_is_allocated()) {
+      this.query_string += where;
+    } else {
+      this.query_string += conditions;
+    }
 
     return this || this.query();
   }

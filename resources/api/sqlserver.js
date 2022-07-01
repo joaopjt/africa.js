@@ -7,10 +7,10 @@ export default class SQLServer {
     this.where = ``;
     this.query_string = `SELECT ${this.collumns} FROM ${this.table}`;
 
-    this.connect();
+    this.connect(server, database, user, pass);
   }
 
-  connect() {
+  connect(server, database, user, pass) {
     async () => {
       try {
         await sql.connect(`Server=${server},1433;Database=${database};User Id=${user};Password=${pass};Encrypt=true`);
@@ -62,7 +62,7 @@ export default class SQLServer {
 
     this.query_string = `INSERT INTO ${table_name} VALUES ${values}`;
 
-    return this.query();
+    return this || this.query();
   }
 
   drop(table_name) {
@@ -89,15 +89,24 @@ export default class SQLServer {
     return this || this.query();
   }
 
+  where_is_allocated() {
+    if (this.query_string.search('WHERE')) return true;
+  }
+
   where(query) {
     let conditions = '';
     const where = ` WHERE ${conditions}`;
 
+    if (this.where_is_allocated()) this.query_string += 'AND'
     Object.keys(query).forEach((key, operator, value) => {
       conditions += `${key} ${operator} ${value}, `;
     });
 
-    this.query_string += where;
+    if (!this.where_is_allocated()) {
+      this.query_string += where;
+    } else {
+      this.query_string += conditions;
+    }
 
     return this || this.query();
   }

@@ -259,6 +259,13 @@ export default class Africa {
 
     return this;
   }
+
+  auto_increment() {
+    this.spacer();
+    this.collumn_string += `AUTO_INCREMENT`;
+
+    return this;
+  }
 }
 
 export { MySQL, MariaDB, PostgreSQL, SQLite, SQLServer };

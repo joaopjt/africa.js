@@ -20,7 +20,7 @@ Create a new table:
 ```javascript
   mysql
     .create('table_name', {
-      'id': africa.int().null(false).primary_key(),
+      'id': africa.int().null(false).primary_key().auto_increment(),
       'name': africa.varchar(255).null(false), // default value of varchar()
       'age': africa.varchar(255).null(false),
       'email': africa.varchar(255).null(false),
