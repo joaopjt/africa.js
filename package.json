@@ -1,6 +1,6 @@
 {
   "name": "africa.js",
-  "version": "1.6.7",
+  "version": "1.6.8",
   "description": "A fulfilled query builder that runs over SQL Server, SQLite, MySQL, MariaDB and PostgreSQL.",
   "keywords": [
     "africa",
@@ -17,7 +17,7 @@
   "license": "MIT",
   "scripts": {
     "build": "./node_modules/.bin/rollup -c",
-    "test": "jest /tests"
+    "test": "node /tests/index.js"
   },
   "devDependencies": {
     "assert": "^2.0.0",
