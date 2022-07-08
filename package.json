@@ -1,6 +1,6 @@
 {
   "name": "africa.js",
-  "version": "1.6.8",
+  "version": "1.7.5",
   "description": "A fulfilled query builder that runs over SQL Server, SQLite, MySQL, MariaDB and PostgreSQL.",
   "keywords": [
     "africa",
@@ -12,6 +12,9 @@
     "mariadb"
   ],
   "main": "dist/index.min.js",
+  "bin": {
+    "africa": "./bin/cli.js"
+  },
   "repository": "https://github.com/joaopjt/africa.git",
   "author": "João Julio",
   "license": "MIT",
@@ -24,6 +27,8 @@
     "babel-core": "6",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.7.0",
+    "colorette": "^2.0.19",
+    "commander": "^9.3.0",
     "cross-origin": "^1.0.6",
     "mocha": "^10.0.0",
     "rollup": "^0.66.6",

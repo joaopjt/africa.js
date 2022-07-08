@@ -8,8 +8,7 @@ The API follows the SQL syntax, so we get the same API methods for every databas
 Lets start with the connection over a MySQL client as a example:
 
 ```javascript
-import africa from 'africa.js';
-import { MySQL } from 'africa.js';
+import { Africa, MySQL } from 'africa.js';
 
 const mysql = new MySQL('localhost', 'root', 'root', 'password');
 ```

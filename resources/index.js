@@ -1,215 +1,215 @@
-import MySQL from './api/mysql';
-import MariaDB from './api/mariadb';
-import PostgreSQL from './api/postgre';
-import SQLite from './api/sqlite';
-import SQLServer from './api/sqlserver';
+import MySQLClient from './api/mysql';
+import MariaDBClient from './api/mariadb';
+import PostgreSQLClient from './api/postgre';
+import SQLiteClient from './api/sqlite';
+import SQLServerClient from './api/sqlserver';
 
-export default class Africa {
+class Africa {
   constructor(space) {
     this.collumn_string = '';
   }
 
-  spacer() {
+  static spacer() {
     if (this.collumn_string) this.collumn_string += ' ';
   }
 
-  int() {
+  static int() {
     this.spacer();
     this.collumn_string += 'int';
 
     return this;
   }
 
-  char(size) {
+  static char(size) {
     this.spacer();
     this.collumn_string += `char(${size})`;
 
     return this;
   }
 
-  varchar(size = 255) {
+  static varchar(size = 255) {
     this.spacer();
     this.collumn_string += `varchar(${size})`;
 
     return this;
   }
 
-  binary(size) {
+  static binary(size) {
     this.spacer();
     this.collumn_string += `BINARY(${size})`;
 
     return this;
   }
 
-  varbinary(size) {
+  static varbinary(size) {
     this.spacer();
     this.collumn_string += `VARBINARY(${size})`;
 
     return this;
   }
 
-  tinyblob() {
+  static tinyblob() {
     this.spacer();
     this.collumn_string += `TINYBLOB`;
 
     return this;
   }
 
-  tinytext() {
+  static tinytext() {
     this.spacer();
     this.collumn_string += `TINYTEXT`;
 
     return this;
   }
 
-  tinyint() {
+  static tinyint() {
     this.spacer();
     this.collumn_string += `TINYINT`;
 
     return this;
   }
 
-  bool() {
+  static bool() {
     this.spacer();
     this.collumn_string += `BOOL`;
 
     return this;
   }
 
-  boolean() {
+  static boolean() {
     this.spacer();
     this.collumn_string += `BOOLEAN`;
 
     return this;
   }
 
-  smallint(size) {
+  static smallint(size) {
     this.spacer();
     this.collumn_string += `SMALLINT(${size})`;
 
     return this;
   }
 
-  mediumint(size) {
+  static mediumint(size) {
     this.spacer();
     this.collumn_string += `MEDIUMINT(${size})`;
 
     return this;
   }
 
-  int(size) {
+  static int(size) {
     this.spacer();
     this.collumn_string += `INT(${size})`;
 
     return this;
   }
 
-  integer(size) {
+  static integer(size) {
     this.spacer();
     this.collumn_string += `INTEGER(${size})`;
 
     return this;
   }
 
-  bigint(size) {
+  static bigint(size) {
     this.spacer();
     this.collumn_string += `BIGINT(${size})`;
 
     return this;
   }
 
-  float(size, d) {
+  static float(size, d) {
     this.spacer();
     this.collumn_string += `FLOAT(${size}, ${d})`;
 
     return this;
   }
 
-  double(size, d) {
+  static double(size, d) {
     this.spacer();
     this.collumn_string += `DOUBLE(${size}, ${d})`;
 
     return this;
   }
 
-  double_precision(size, d) {
+  static double_precision(size, d) {
     this.spacer();
     this.collumn_string += `DOUBLE PRECISION(${size}, ${d})`;
 
     return this;
   }
 
-  decimal(size, d) {
+  static decimal(size, d) {
     this.spacer();
     this.collumn_string += `DECIMAL(${size}, ${d})`;
 
     return this;
   }
 
-  text() {
+  static text() {
     this.spacer();
     this.collumn_string += `TEXT`;
 
     return this;
   }
 
-  bit(size) {
+  static bit(size) {
     this.spacer();
     this.collumn_string += `BIT(${size})`;
 
     return this;
   }
 
-  blob(size) {
+  static blob(size) {
     this.spacer();
     this.collumn_string += `BLOB(${size})`;
 
     return this;
   }
 
-  mediumtext(size) {
+  static mediumtext(size) {
     this.spacer();
     this.collumn_string += `MEDIUMTEXT`;
 
     return this;
   }
 
-  mediumblob(size) {
+  static mediumblob(size) {
     this.spacer();
     this.collumn_string += `MEDIUMBLOB`;
 
     return this;
   }
 
-  longtext() {
+  static longtext() {
     this.spacer();
     this.collumn_string += `LONGTEXT`;
 
     return this;
   }
 
-  longblob() {
+  static longblob() {
     this.spacer();
     this.collumn_string += `LONGBLOB`;
 
     return this;
   }
 
-  enum(list) {
+  static enum(list) {
     this.spacer();
     this.collumn_string += `ENUM(${list})`;
 
     return this;
   }
 
-  set(list) {
+  static set(list) {
     this.spacer();
     this.collumn_string += `SET(${list})`;
 
     return this;
   }
 
-  null(n = true) {
+  static null(n = true) {
     this.spacer();
     if (!n) this.collumn_string += 'NOT ';
 
@@ -218,54 +218,61 @@ export default class Africa {
     return this;
   }
 
-  primary_key() {
+  static primary_key() {
     this.spacer();
     this.collumn_string += 'PRIMARY KEY';
 
     return this;
   }
 
-  date() {
+  static date() {
     this.spacer();
     this.collumn_string += 'DATE';
 
     return this;
   }
 
-  datetime(format) {
+  static datetime(format) {
     this.spacer();
     this.collumn_string += `DATETIME(${format})`;
 
     return this;
   }
 
-  timestamp(format) {
+  static timestamp(format) {
     this.spacer();
     this.collumn_string += `TIMESTAMP(${format})`;
 
     return this;
   }
 
-  time(format) {
+  static time(format) {
     this.spacer();
     this.collumn_string += `TIME(${format})`;
 
     return this;
   }
 
-  year() {
+  static year() {
     this.spacer();
     this.collumn_string += `YEAR`;
 
     return this;
   }
 
-  auto_increment() {
+  static auto_increment() {
     this.spacer();
     this.collumn_string += `AUTO_INCREMENT`;
 
     return this;
   }
-}
+};
 
-export { MySQL, MariaDB, PostgreSQL, SQLite, SQLServer };
+export {
+  Africa as default,
+  MySQL,
+  MariaDB,
+  PostgreSQL,
+  SQLite,
+  SQLServer,
+};

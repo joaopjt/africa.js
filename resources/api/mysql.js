@@ -24,3 +24,7 @@ export default class MySQL extends SQL {
     });
   }
 }
+
+const db = new MySQL('localhost', 'root', '', 'password');
+
+let select = db.select().from('test');
