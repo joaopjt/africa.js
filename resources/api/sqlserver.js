@@ -4,10 +4,6 @@ import SQL from './_sql-default';
 export default class SQLServer extends SQL { 
   constructor(server, user, pass, database) {
     super();
-    this.table = '';
-    this.collums = '*';
-    this.where = ``;
-    this.query_string = `SELECT ${this.collumns} FROM ${this.table}`;
 
     this.connect(server, database, user, pass);
   }

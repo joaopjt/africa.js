@@ -4,10 +4,6 @@ import SQL from './_sql-default';
 export default class PostgreSQL extends SQL { 
   constructor(host, user, password, database) {
     super();
-    this.table = '';
-    this.collums = '*';
-    this.where = ``;
-    this.query_string = `SELECT ${this.collumns} FROM ${this.table}`;
 
     this.client = new Client({
         host,

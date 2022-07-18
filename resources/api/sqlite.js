@@ -5,12 +5,8 @@ import SQL from './_sql-default';
 export default class SQLite extends SQL { 
   constructor(database_filename) {
     super();
-    this.table = '';
-    this.collums = '*';
-    this.where = ``;
-    this.query_string = `SELECT ${this.collumns} FROM ${this.table}`;
 
-    this.db = null;
+    this.db = undefined;
     this.connect();
   }
 
