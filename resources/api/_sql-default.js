@@ -78,7 +78,8 @@ export default class SQL {
     let conditions = '';
     const where = ` WHERE ${conditions}`;
 
-    if (this.where_is_allocated()) this.query_string += 'AND'
+    if (this.where_is_allocated()) this.query_string += 'AND';
+    
     Object.keys(query).forEach((key, operator, value) => {
       conditions += `${key} ${operator} ${value}, `;
     });

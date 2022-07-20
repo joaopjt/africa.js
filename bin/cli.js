@@ -7,7 +7,7 @@ const { version } = require('../package.json');
 program
   .name('África.js ORM Command line Interface')
   .description('CLI access of África.js Query Builder/ORM.')
-  .version('0.8.0');
+  .version(version);
 
 const env_string = (host, user, pass, db) => {
   return `HOST: ${host}\nUSER: ${user}\nPASS: ${pass}\nDATABASE: ${database}`;
@@ -31,8 +31,34 @@ program.command('create-migration')
   .description('Create a migration file for the database')
   .argument('<filename>', 'migration filename', (args) => {
     let date = new Date();
-    let filename = (args.search('_table') >= 0) ? `${date.toLocaleDateString().replaceAll('/', '-')}${date.toLocaleTimeString().replaceAll(':', '-').split(' PM')[0]}` : ;
-    return 
+    date = `${date.toLocaleDateString().replaceAll('/', '-')}${date.toLocaleTimeString().replaceAll(':', '-').split(' PM')[0]}`;
+
+    let filename = (args.search('_table') >= 0) ? `${date}_${args}` : `${date}_${args}_table`;
+
+    return filename;
+  });
+
+program.command('create-seed')
+  .description('Create a seeder file for the database')
+  .argument('<filename>', 'seeder file filename', (args) => {
+    let date = new Date();
+    date = `${date.toLocaleDateString().replaceAll('/', '-')}${date.toLocaleTimeString().replaceAll(':', '-').split(' PM')[0]}`;
+
+    let filename = (args.search('_seeder') >= 0) ? `${date}_${args}` : `${date}_${args}_seeder`;
+
+    return filename;
+  });
+
+program.command('migrate')
+  .description ('Migrate all migrations files to the database')
+  .action(() => {
+    // run migrations, bitch
+  });
+
+program.command('seed')
+  .description ('Seed seeder files to the database')
+  .action(() => {
+    // run seeder, asshole
   });
 
 program.parse();
