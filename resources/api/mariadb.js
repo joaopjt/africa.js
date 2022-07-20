@@ -1,5 +1,5 @@
 import mariadb from 'mariadb';
-import SQL from './_sql-default';
+import SQL from './_sql-base';
 
 export default class MariaDB extends SQL { 
   constructor(host, user) {

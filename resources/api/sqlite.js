@@ -1,6 +1,6 @@
 import { open } from 'sqlite';
 import sqlite from 'sqlite3';
-import SQL from './_sql-default';
+import SQL from './_sql-base';
 
 export default class SQLite extends SQL { 
   constructor(database_filename) {

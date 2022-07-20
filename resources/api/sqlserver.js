@@ -1,5 +1,5 @@
 import mssql from 'mssql';
-import SQL from './_sql-default';
+import SQL from './_sql-base';
 
 export default class SQLServer extends SQL { 
   constructor(server, user, pass, database) {

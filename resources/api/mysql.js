@@ -1,5 +1,5 @@
 import mysql from 'mysql';
-import SQL from './_sql-default';
+import SQL from './_sql-base';
 
 export default class MySQL extends SQL { 
   constructor(host, user, pass, database) {

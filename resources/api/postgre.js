@@ -1,5 +1,5 @@
 import { Client } from 'pg';
-import SQL from './_sql-default';
+import SQL from './_sql-base';
 
 export default class PostgreSQL extends SQL { 
   constructor(host, user, password, database) {
