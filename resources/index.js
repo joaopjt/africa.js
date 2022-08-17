@@ -1,3 +1,6 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import MySQLClient from './api/mysql';
 import MariaDBClient from './api/mariadb';
 import PostgreSQLClient from './api/postgre';

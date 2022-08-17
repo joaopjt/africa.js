@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const moment = require('moment');
 const { fs } = require('node:fs');
 const { green } = require('colorette');
@@ -7,24 +8,22 @@ const { version } = require('../package.json');
 
 program
   .name('África.js CLI')
-  .description('The África.js Command Line Interface.')
+  .description('The África.js ORM Command Line Interface.')
   .version(version);
 
 const env_string = (host, user, pass, db) => {
-  return `DB_HOST: ${host}\nDB_USER: ${user}\nDB_PASS: ${pass}\nDB_DATABASE: ${database}`;
+  return `DB_CLIENT: ${client}\nDB_HOST: ${host}\nDB_USER: ${user}\nDB_PASS: ${pass}\nDB_DATABASE: ${database}`;
 };
 
-program.command('init')
-  .description('Creates a .env configuration file with the enviroment variables')
-  .argument('<client>', 'database client')
-  .argument('<host>', 'host address')
-  .argument('<user>', 'user')
-  .argument('<pass>', 'password')
-  .argument('<database>', 'database name')
-  .option('-o, --output-file <filename>', 'output filename', '.env')
-  .action((host, user, pass, db, output_file) => {
-    fs.writeFile(`./${output_file}`, env_string(host, user, pass, db), () => {
-      console.log(green(`${output_file} file created with success!`));
+program.command('init <database_client> <host> <user> <pass> <database_name>')
+  .description('Creates/read the .env configuration file')
+  .action((client, host, user, pass, db) => {
+    fs.readFile('.env', 'utf8', err => {
+      if (err) {
+        fs.writeFile(`.env`, env_string(host, user, pass, db), () => {
+          console.log(green(`.env file created with success!`));
+        });
+      }
     });
   });
 
@@ -36,7 +35,9 @@ program.command('create-migration')
 
     let filename = `${date}_${args}`;
 
-    
+    fs.writeFile(`./${filename}`, env_string(host, user, pass, db), () => {
+      console.log(green(`'${filename}' file created with success!`));
+    });
   });
 
 program.command('create-seed')
@@ -47,7 +48,9 @@ program.command('create-seed')
 
     let filename = `${date}_${args}`;
 
-    
+    fs.writeFile(`./${filename}`, env_string(host, user, pass, db), () => {
+      console.log(green(`'${filename}' file created with success!`));
+    });
   });
 
 program.command('migrate')

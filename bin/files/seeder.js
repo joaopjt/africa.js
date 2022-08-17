@@ -1,4 +1,4 @@
-const { databaseClient } = require('africa.js');
+const { MySQL } = require('africa.js');
 
 let example = {
   name: 'John',
@@ -6,7 +6,7 @@ let example = {
 };
 
 exports.seeder = () => {
-  databaseClient.insert('table_name', () => {
+  MySQL.insert('table_name', () => {
     return [
       {
         ...example
