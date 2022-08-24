@@ -51,6 +51,18 @@ export default class SQL {
 
     this.query_string = `DROP TABLE ${table_name}`;
 
+    return this || this.query();
+  }
+
+  restrict() {
+    this.query_string += ` RESTRICT`;
+
+    return this.query();
+  }
+
+  cascade() {
+    this.query_string += ` CASCADE`;
+
     return this.query();
   }
 

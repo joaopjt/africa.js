@@ -1,15 +1,14 @@
 const Africa = require('africa.js');
-const { databaseClient } = require('africa.js');
 
-exports.up = () => {
-  databaseClient.newTable('table_name', () => {
+exports.up = (db) => {
+  db.create('table_name', () => {
     return {
       'id': Africa.int().auto_increment().primary_key(),
-      'name': Africa.varchar()
+      'name': Africa.varchar(255)
     }
-  })
+  });
 }
 
-exports.down = () => {
-
+exports.down = (db) => {
+  db.drop('table_name');
 };
