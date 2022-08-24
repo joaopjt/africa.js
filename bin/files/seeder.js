@@ -3,10 +3,9 @@ let example = {
   age: '30'
 };
 
-exports.seed('table_name', () => {
-  return [
-    {
-      ...example
-    }
-  ]
-});
+exports.table = 'table_name' 
+exports.seed = [
+  {
+    ...example
+  }
+];

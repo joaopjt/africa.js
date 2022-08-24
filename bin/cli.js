@@ -77,6 +77,11 @@ program.command('create-migration')
       fs.copy('./files/migration.js', process.cwd() + process.env['AFRICA_MIGRATIONS'] + `./${filename}`, fs.constants.COPYFILE_EXCL, () => {
         console.log(green(`'${filename}' migration file created with success!`));
       });
+
+      db.create('_africa_migrations', {
+        'id': Africa.int().primary_key().not_null(),
+        'name': Africa.varchar()
+      });
     }
   });
 
@@ -94,6 +99,11 @@ program.command('create-seed')
       fs.copy('./files/seeder.js', process.cwd() + process.env['AFRICA_SEEDS'] + `./${filename}`, fs.constants.COPYFILE_EXCL, () => {
         console.log(green(`'${filename}' seed file created with success!`));
       });
+
+      db.create('_africa_seeders', {
+        'id': Africa.int().primary_key().not_null(),
+        'name': Africa.varchar()
+      });
     }
   });
 
@@ -106,8 +116,12 @@ program.command('migrate')
       let migrated_files = db.select('name').from('_africa_migrations');
 
       fs.readdir(process.env['AFRICA_MIGRATIONS'], (err, files) => {
-        files.map(f => migrated_files[f.name] = undefined).forEach(file => {
-          let migration = require(`${process.env['AFRICA_MIGRATIONS']}${file.name}`);
+        files.forEach(file => {
+          if (migrated_files.find(f => f.name != file)) {
+            let migration = require(process.cwd() + process.env['AFRICA_MIGRATIONS'] + file);
+
+            migration.up(db);
+          }
         });
       });
     }
@@ -119,9 +133,15 @@ program.command('seed')
     if (!db) {
       console.error('You need to init the ORM before of running `africa seed`.');
     } else {
+      let migrated_seeds = db.select('name').from('_africa_seeders');
+
       fs.readdir(process.env['AFRICA_SEEDS'], (err, files) => {
         files.forEach(file => {
+          if (migrated_seeds.find(s => s.name != file)) {
+            let seed = require(process.cwd() + process.env['AFRICA_SEEDS'] + file);
 
+            seed.seed();
+          }
         });
       });
     }

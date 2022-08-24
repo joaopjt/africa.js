@@ -212,11 +212,19 @@ class Africa {
     return this;
   }
 
-  static null(n = true) {
+  static null() {
     this.spacer();
     if (!n) this.collumn_string += 'NOT ';
 
     this.collumn_string += `NULL`;
+
+    return this;
+  }
+
+  static not_null() {
+    this.spacer();
+
+    this.collumn_string += `NOT NULL`;
 
     return this;
   }
