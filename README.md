@@ -29,14 +29,14 @@ Create a new table:
 Read table from database:
 ```javascript
   mysql
-    .select('collumns')
+    .select('id, name')
     .from('table');
 ```
 
 Read table from database with clausules:
 ```javascript
   mysql
-    .select('collumns')
+    .select('id, name')
     .from('table')
     .where('collumn', 'operator', 'value');
 ```
@@ -53,7 +53,7 @@ Insert in table:
 Read table from database with INNER JOIN:
 ```javascript
   mysql
-    .select('collumns')
+    .select('id, name')
     .from('table')
     .join('table2', {
       foo: 'bar'
@@ -63,7 +63,7 @@ Read table from database with INNER JOIN:
 Read table from database with LEFT JOIN:
 ```javascript
   mysql
-    .select('collumns')
+    .select('id, name')
     .from('table')
     .left_join('table2', {
       foo: 'bar'
@@ -73,7 +73,7 @@ Read table from database with LEFT JOIN:
 Read table from database with RIGHT JOIN:
 ```javascript
   mysql
-    .select('collumns')
+    .select('id, name')
     .from('table')
     .right_join('table2', {
       foo: 'bar'
@@ -83,11 +83,17 @@ Read table from database with RIGHT JOIN:
 Read table from database with OUTER FULL JOIN:
 ```javascript
   mysql
-    .select('collumns')
+    .select('id, name')
     .from('table')
     .outer_join('table2', {
       foo: 'bar'
     });
+```
+
+RAW SQL:
+```javascript
+  mysql
+    .raw('SELECT * FROM table_name');
 ```
 
 ## COPYRIGHT

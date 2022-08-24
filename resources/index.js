@@ -1,11 +1,11 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-import MySQLClient from './api/mysql';
-import MariaDBClient from './api/mariadb';
-import PostgreSQLClient from './api/postgre';
-import SQLiteClient from './api/sqlite';
-import SQLServerClient from './api/sqlserver';
+import MySQL from './api/mysql';
+import MariaDB from './api/mariadb';
+import PostgreSQL from './api/postgre';
+import SQLite from './api/sqlite';
+import SQLServer from './api/sqlserver';
 
 class Africa {
   constructor(space) {

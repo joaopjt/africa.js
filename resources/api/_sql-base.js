@@ -166,7 +166,7 @@ export default class SQL {
   }
 
   raw(r) {
-    this.query_string += raw;
+    this.query_string += r;
 
     return this || this.query;
   }
