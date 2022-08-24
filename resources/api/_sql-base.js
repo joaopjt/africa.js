@@ -56,6 +56,14 @@ export default class SQL {
     return this || this.query();
   }
 
+  delete(table_name) {
+    if (collumns) this.collums = collumns;
+
+    this.query_string = `DELETE FROM ${table_name}`;
+
+    return this || this.query();
+  }
+
   restrict() {
     this.query_string += ` RESTRICT`;
 
@@ -66,14 +74,6 @@ export default class SQL {
     this.query_string += ` CASCADE`;
 
     return this.query();
-  }
-
-  delete(table_name) {
-    if (collumns) this.collums = collumns;
-
-    this.query_string = `DELETE FROM ${table_name}`;
-
-    return this || this.query();
   }
 
   from(table) {
@@ -157,5 +157,17 @@ export default class SQL {
     this.query_string += join;
 
     return this || this.query();
+  }
+
+  exists() {
+    this.query_string += ' EXISTS';
+
+    return this || this.query;
+  }
+
+  raw(r) {
+    this.query_string += raw;
+
+    return this || this.query;
   }
 }
