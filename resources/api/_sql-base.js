@@ -25,23 +25,25 @@ export default class SQL {
     return this.query();
   }
 
-  insert(table_name, values_array) {
+  insert(table_name, values_object) {
+    let collumns = '';
     let values = '';
 
-    values_array.forEach((v, i) => {
-      let values = '';
-      let phrase = `(${values})`;
+    Object.keys(values_object).forEach((key, index) => {
+      let collumn = key;
+      if (index + 1 === Object.keys(values_object).lenght) collumn += ',';
 
-      v.forEach((value, i) => {
-        values += `${value},`;
-
-        if (i+1 < v.lenght) values += ' ';
-      });
-
-      if (i+1 < values_array.lenght) values += ', ';
+      collumns += collumn;
     });
 
-    this.query_string = `INSERT INTO ${table_name} VALUES ${values}`;
+    Object.values(values_object).forEach((key, index) => {
+      let value = key;
+      if (index + 1 === Object.keys(values_object).lenght) value += ',';
+
+      values += value;
+    });
+
+    this.query_string = `INSERT INTO ${table_name} (${collumns}) VALUES (${values})`;
 
     return this || this.query();
   }

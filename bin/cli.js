@@ -121,6 +121,8 @@ program.command('migrate')
             let migration = require(process.cwd() + process.env['AFRICA_MIGRATIONS'] + file);
 
             migration.up(db);
+
+            db.insert('_africa_migrations', { name: file });
           }
         });
       });
@@ -138,9 +140,11 @@ program.command('seed')
       fs.readdir(process.env['AFRICA_SEEDS'], (err, files) => {
         files.forEach(file => {
           if (migrated_seeds.find(s => s.name != file)) {
-            let seed = require(process.cwd() + process.env['AFRICA_SEEDS'] + file);
+            let { table, seed } = require(process.cwd() + process.env['AFRICA_SEEDS'] + file);
 
-            seed.seed();
+            seed.forEach((s) => { db.insert(table, s); });
+
+            db.insert('_africa_seeders', { name: file });
           }
         });
       });
