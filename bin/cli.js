@@ -9,7 +9,8 @@
 
 'use strict';
 
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 const moment = require('moment');
 const { fs } = require('node:fs');
