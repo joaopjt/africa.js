@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * Copyright (c) África.js
  *
@@ -13,7 +14,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const moment = require('moment');
-const { fs } = require('node:fs');
+const fs = require('fs');
 const { green } = require('colorette');
 const { program } = require('commander');
 const { version } = require('../package.json');
@@ -24,8 +25,8 @@ program
   .version(version);
 
 let db = undefined;
-const env_string = (client, host, user, pass, db) => {
-  return `AFRICA_MIGRATIONS: migrations\nAFRICA_SEEDS: seeds\n\nDB_CLIENT: ${client}\nDB_HOST: ${host}\nDB_USER: ${user}\nDB_PASS: ${pass}\nDB_DATABASE: ${database}`;
+let env_string = (client, host, user, pass, db) => {
+  return `AFRICA_MIGRATIONS="migrations/"\nAFRICA_SEEDS="seeds/"\n\nDB_CLIENT="${client}"\nDB_HOST="${host}"\nDB_USER="${user}"\nDB_PASS="${pass}"\nDB_DATABASE="${db}"`;
 };
 
 if (process.env['DB_CLIENT']) {
@@ -64,13 +65,19 @@ if (process.env['DB_CLIENT']) {
 program.command('init <database_client> <host> <user> <pass> <database_name>')
   .description('Creates/read the .env configuration file')
   .action((client, host, user, pass, db) => {
-    fs.readFile('.env', 'utf8', err => {
+    fs.readFile(process.cwd() + '/.env', 'utf8', (err, file) => {
       if (err) {
-        fs.writeFile(`.env`, env_string(client, host, user, pass, db), () => {
-          console.log(green(`.env file created with success!`));
+        let env = env_string(client, host, user, pass, db);
+
+        fs.writeFile(process.cwd() + `/.env`, env, {
+          encoding: "utf8",
+          flag: "w"
+        }, (err) => {
+          if (!err) console.log(green(`.env file created with success!`));
         });
-        fs.write(process.env['AFRICA_MIGRATIONS']);
-        fs.write(process.env['AFRICA_SEEDS']);
+
+        fs.mkdirSync(process.cwd() + '/migrations');
+        fs.mkdirSync(process.cwd() + '/seeds');
       }
     });
   });
