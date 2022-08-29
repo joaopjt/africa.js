@@ -212,7 +212,7 @@ class Africa {
     return this;
   }
 
-  static null() {
+  static null(n = true) {
     this.spacer();
     if (!n) this.collumn_string += 'NOT ';
 

@@ -19,6 +19,8 @@ const { green } = require('colorette');
 const { program } = require('commander');
 const { version } = require('../package.json');
 
+const { MySQL, MariaDB, PostgreSQL, SQLServer, SQLite } = require('../dist/index.min.js');
+
 program
   .name('África.js CLI')
   .description('The África.js ORM Command Line Interface.')
@@ -33,31 +35,31 @@ if (process.env['DB_CLIENT']) {
   switch(process.env['DB_CLIENT']) {
     case 'MySQL':
     case 'mysql':
-      db = new MySQL(...dbConfig);
+      db = new MySQL(process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
       break;
 
     case 'MariaDB':
     case 'mariadb':
-      db = new MariaDB(...dbConfig);
+      db = new MariaDB(process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
       break;
 
     case 'PostgreSQL':
     case 'postgresql':
-      db = new PostgreSQL(...dbConfig);
+      db = new PostgreSQL(process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
       break;
 
     case 'SQLite':
     case 'sqlite':
-      db = new SQLite(dbConfig.database);
+      db = new SQLite(process.env['DB_DATABASE']);
       break;
 
     case 'SQLServer':
     case 'sqlserver':
-      db = new SQLServer(...dbConfig);
+      db = new SQLServer(process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
       break;
 
     default:
-      db = new MySQL(...dbConfig);
+      db = new MySQL(process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
       break;
   };
 }
@@ -88,18 +90,19 @@ program.command('create-migration')
     if (!db) {
       console.error('You need to init the ORM before of running `africa create-migration`.');
     } else {
-      let date = new Date();
-      date = `${date.toLocaleDateString().replaceAll('/', '')}_${date.toTimeString().replaceAll(':', '-').split(' ')[0]}`;
+      let date = moment().format('YYYYMMDD_HH-mm-ss');
 
       let filename = `${date}_${nameargm}`;
 
-      fs.copy('./files/migration.js', process.cwd() + process.env['AFRICA_MIGRATIONS'] + `./${filename}`, fs.constants.COPYFILE_EXCL, () => {
-        console.log(green(`'${filename}' migration file created with success!`));
-      });
+      if (!db.select().from('_africa_migrations')) {
+        db.create('_africa_migrations', {
+          'id': Africa.int().primary_key().not_null(),
+          'name': Africa.varchar()
+        });
+      }
 
-      db.create('_africa_migrations', {
-        'id': Africa.int().primary_key().not_null(),
-        'name': Africa.varchar()
+      fs.copyFile('./files/migration.js', process.cwd() + process.env['AFRICA_MIGRATIONS'] + filename, fs.constants.COPYFILE_EXCL, () => {
+        console.log(green(`'${filename}' migration file created with success!`));
       });
     }
   });
@@ -110,18 +113,19 @@ program.command('create-seed')
     if (!db) {
       console.error('You need to init the ORM before of running `africa create-seed`.');
     } else {
-      let date = new Date();
-      date = `${date.toLocaleDateString().replaceAll('/', '')}_${date.toTimeString().replaceAll(':', '-').split(' ')[0]}`;
+      let date = moment().format('YYYYMMDD_HH-mm-ss');
 
       let filename = `${date}_${nameargm}`;
 
-      fs.copy('./files/seeder.js', process.cwd() + process.env['AFRICA_SEEDS'] + `./${filename}`, fs.constants.COPYFILE_EXCL, () => {
+      if (!db.select().from('_africa_seeders')) {
+        db.create('_africa_seeders', {
+          'id': Africa.int().primary_key().not_null(),
+          'name': Africa.varchar()
+        });
+      }
+      
+      fs.copyFile('./files/seeder.js', process.cwd() + process.env['AFRICA_SEEDS'] + filename, fs.constants.COPYFILE_EXCL, () => {
         console.log(green(`'${filename}' seed file created with success!`));
-      });
-
-      db.create('_africa_seeders', {
-        'id': Africa.int().primary_key().not_null(),
-        'name': Africa.varchar()
       });
     }
   });
