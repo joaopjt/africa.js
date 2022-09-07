@@ -2,12 +2,12 @@ import mysql from 'mysql';
 import SQL from './_sql-base';
 
 export default class MySQL extends SQL { 
-  constructor(host, user, pass, database) {
+  constructor(host, user, password, database) {
     super();
     this.conn = mysql.createConnection({
       host,
       user,
-      pass,
+      password,
       database
     });
 

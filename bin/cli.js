@@ -22,7 +22,7 @@ const { version } = require('../package.json');
 const { MySQL, MariaDB, PostgreSQL, SQLServer, SQLite } = require('../dist/index.min.js');
 
 program
-  .name('África.js CLI')
+  .name('África.js')
   .description('The África.js ORM Command Line Interface.')
   .version(version);
 
