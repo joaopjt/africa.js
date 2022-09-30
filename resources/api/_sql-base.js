@@ -31,14 +31,14 @@ export default class SQL {
 
     Object.keys(values_object).forEach((key, index) => {
       let collumn = key;
-      if (index + 1 === Object.keys(values_object).lenght) collumn += ',';
+      if (index + 1 === Object.keys(values_object).length) collumn += ',';
 
       collumns += collumn;
     });
 
     Object.values(values_object).forEach((key, index) => {
       let value = key;
-      if (index + 1 === Object.keys(values_object).lenght) value += ',';
+      if (index + 1 === Object.keys(values_object).length) value += ',';
 
       values += value;
     });
