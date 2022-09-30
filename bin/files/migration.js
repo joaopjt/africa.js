@@ -1,6 +1,4 @@
-const Africa = require('africa.js');
-
-exports.up = (db) => {
+exports.up = (db, Africa) => {
   db.create('table_name', () => {
     return {
       'id': Africa.int().auto_increment().primary_key(),
@@ -9,6 +7,6 @@ exports.up = (db) => {
   });
 }
 
-exports.down = (db) => {
+exports.down = (db, Africa) => {
   db.drop('table_name');
 };

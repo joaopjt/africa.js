@@ -19,6 +19,7 @@ const { green } = require('colorette');
 const { program } = require('commander');
 const { version } = require('../package.json');
 
+const Africa = require('../dist/index.min.js');
 const { MySQL, MariaDB, PostgreSQL, SQLServer, SQLite } = require('../dist/index.min.js');
 
 program
@@ -31,68 +32,111 @@ let env_string = (client, host, user, pass, db) => {
   return `AFRICA_MIGRATIONS="migrations/"\nAFRICA_SEEDS="seeds/"\n\nDB_CLIENT="${client}"\nDB_HOST="${host}"\nDB_USER="${user}"\nDB_PASS="${pass}"\nDB_DATABASE="${db}"`;
 };
 
-if (process.env['DB_CLIENT']) {
-  switch(process.env['DB_CLIENT']) {
+let db_connect = function(db_client, host, user, pass ,db_name) {
+  switch(db_client) {
     case 'MySQL':
     case 'mysql':
-      db = new MySQL(process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
+      db = new MySQL(host, user, pass, db_name);
       break;
 
     case 'MariaDB':
     case 'mariadb':
-      db = new MariaDB(process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
+      db = new MariaDB(host, user, pass, db_name);
       break;
 
     case 'PostgreSQL':
     case 'postgresql':
-      db = new PostgreSQL(process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
+      db = new PostgreSQL(host, user, pass, db_name);
       break;
 
     case 'SQLite':
     case 'sqlite':
-      db = new SQLite(process.env['DB_DATABASE']);
+      db = new SQLite(db_name);
       break;
 
     case 'SQLServer':
     case 'sqlserver':
-      db = new SQLServer(process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
+      db = new SQLServer(host, user, pass, db_name);
       break;
 
     default:
-      db = new MySQL(process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
+      db = new MySQL(host, user, pass, db_name);
       break;
   };
+};
+
+if (process.env['DB_CLIENT']) {
+  db_connect(process.env['DB_CLIENT'], process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
 }
 
-program.command('init <database_client> <host> <user> <pass> <database_name>')
+program.command('init')
   .description('Creates/read the .env configuration file')
-  .action((client, host, user, pass, db) => {
+  .option('<database_client>', 'database client (MySQL, SQLServer, SQLite, MariaDB, PostgreSQL)')
+  .option('<host>', 'database host')
+  .option('<user>', 'database connection user')
+  .option('<pass>', 'database connection pass')
+  .option('<database_name>', 'database name')
+  .action((client, host, user, pass, db_name) => {
     fs.readFile(process.cwd() + '/.env', 'utf8', (err, file) => {
       if (err) {
-        let env = env_string(client, host, user, pass, db);
+        let data = env_string(client, host, user, pass, db_name);
 
-        fs.writeFile(process.cwd() + `/.env`, env, {
+        fs.writeFile(process.cwd() + `/.env`, data, {
           encoding: "utf8",
           flag: "w"
         }, (err) => {
-          if (!err) console.log(green(`.env file created with success!`));
+          if (!err) { console.log(green(`.env file created with success!`)); } else { console.error(err); };
         });
 
         fs.mkdirSync(process.cwd() + '/migrations');
         fs.mkdirSync(process.cwd() + '/seeds');
+
+        db_connect(client, host, user, pass, db_name);
+
+        db.create('_africa_seeders', () => {
+          return {
+            'id': Africa.int().auto_increment().primary_key(),
+            'name': Africa.varchar()
+          }
+        });
+
+        db.create('_africa_migrations', () => {
+          return {
+            'id': Africa.int().auto_increment().primary_key(),
+            'name': Africa.varchar()
+          }
+        });
+      } else {
+        fs.mkdirSync(process.cwd() + env('AFRICA_MIGRATIONS'));
+        fs.mkdirSync(process.cwd() + env('AFRICA_SEEDS'));
+
+        db.create('_africa_migrations', () => {
+          return {
+            'id': Africa.int().auto_increment().primary_key(),
+            'name': Africa.varchar()
+          }
+        });
+
+        db.create('_africa_seeders', () => {
+          return {
+            'id': Africa.int().auto_increment().primary_key(),
+            'name': Africa.varchar()
+          }
+        });
       }
     });
   });
 
 program.command('create-migration')
   .description('Create a migration file for the database')
-  .argument('<filename>', 'migration filename', (nameargm) => {
+  .argument('<filename>', 'migration filename')
+  .action((filename) => {
     if (!db) {
       console.error('You need to init the ORM before of running `africa create-migration`.');
     } else {
-      let date = moment().format('YYYYMMDD_HH-mm-ss');
+      let date = moment().format('YYYYMMDD_HHmmss');
 
-      let filename = `${date}_${nameargm}`;
+      filename = `${date}_${filename}.js`;
 
       if (!db.select().from('_africa_migrations')) {
         db.create('_africa_migrations', {
@@ -101,21 +145,26 @@ program.command('create-migration')
         });
       }
 
-      fs.copyFile('./files/migration.js', process.cwd() + process.env['AFRICA_MIGRATIONS'] + filename, fs.constants.COPYFILE_EXCL, () => {
-        console.log(green(`'${filename}' migration file created with success!`));
+      fs.copyFile(__dirname + '/files/migration.js', process.cwd() + '/' + process.env['AFRICA_MIGRATIONS'] + '/' + filename, fs.constants.COPYFILE_EXCL, (err) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log(green(`'${filename}' migration file created with success!`));
+        }
       });
     }
   });
 
 program.command('create-seed')
   .description('Create a seeder file for the database')
-  .argument('<filename>', 'seeder file filename', (nameargm) => {
+  .argument('<filename>', 'seeder filename')
+  .action((filename) => {
     if (!db) {
       console.error('You need to init the ORM before of running `africa create-seed`.');
     } else {
-      let date = moment().format('YYYYMMDD_HH-mm-ss');
+      let date = moment().format('YYYYMMDD_HHmmss');
 
-      let filename = `${date}_${nameargm}`;
+      filename = `${date}_${filename}.js`;
 
       if (!db.select().from('_africa_seeders')) {
         db.create('_africa_seeders', {
@@ -123,9 +172,13 @@ program.command('create-seed')
           'name': Africa.varchar()
         });
       }
-      
-      fs.copyFile('./files/seeder.js', process.cwd() + process.env['AFRICA_SEEDS'] + filename, fs.constants.COPYFILE_EXCL, () => {
-        console.log(green(`'${filename}' seed file created with success!`));
+
+      fs.copyFile(__dirname + '/files/seeder.js', process.cwd() + '/' + process.env['AFRICA_SEEDS'] + '/' + filename, fs.constants.COPYFILE_EXCL, (err) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log(green(`'${filename}' seed file created with success!`));
+        }
       });
     }
   });
@@ -138,12 +191,14 @@ program.command('migrate')
     } else {
       let migrated_files = db.select('name').from('_africa_migrations');
 
+      console.log(migrated_files);
+
       fs.readdir(process.env['AFRICA_MIGRATIONS'], (err, files) => {
         files.forEach(file => {
-          if (migrated_files.find(f => f.name != file)) {
+          if (!migrated_files.find(f => f.name === file)) {
             let migration = require(process.cwd() + process.env['AFRICA_MIGRATIONS'] + file);
 
-            migration.up(db);
+            migration.up(db, Africa);
 
             db.insert('_africa_migrations', { name: file });
           }
@@ -162,7 +217,7 @@ program.command('seed')
 
       fs.readdir(process.env['AFRICA_SEEDS'], (err, files) => {
         files.forEach(file => {
-          if (migrated_seeds.find(s => s.name != file)) {
+          if (!migrated_seeds.find(s => s.name === file)) {
             let { table, seed } = require(process.cwd() + process.env['AFRICA_SEEDS'] + file);
 
             seed.forEach((s) => { db.insert(table, s); });

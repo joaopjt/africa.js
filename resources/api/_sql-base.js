@@ -12,7 +12,7 @@ export default class SQL {
     return this;
   }
 
-  create(table_name, collums_object) {
+  create(table_name, collumns_object) {
     let collumns = '';
     if (!table_name) throw new Error('Expected table name but none was given.');
 
