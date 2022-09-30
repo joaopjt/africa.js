@@ -31,7 +31,7 @@ To create a seeder, you can run:
 
 ```bash
 $ africa create-seeder example_seed
-'20010911_101001-example_seed' seed file created with success!
+'20010911_101010-example_seed' seed file created with success!
 ```
 
 ### Migrate
