@@ -16,6 +16,8 @@ The ```init``` command, starts the CLI creating a ***.env*** file and the folder
 $ africa init <database_client> <host> <user> <password> <database_name>
 ```
 
+Or, if you already have a ***.env*** file, you can just run ```africa init```.
+
 ### Create Migration
 
 To create a migration, you need to run:
