@@ -69,7 +69,7 @@ if (process.env['DB_CLIENT']) {
   db_connect(process.env['DB_CLIENT'], process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
 }
 
-program.command('init <database_client> <host> <user> <pass> <database_name>')
+program.command('init [database_client] [host] [user] [pass] [database_name]')
   .description('Creates or Read the .env configuration file')
   .action((client, host, user, pass, db_name) => {
     fs.readFile(process.cwd() + '/.env', 'utf8', (err, file) => {
@@ -102,8 +102,8 @@ program.command('init <database_client> <host> <user> <pass> <database_name>')
           }
         });
       } else {
-        fs.mkdirSync(process.cwd() + env('AFRICA_MIGRATIONS'));
-        fs.mkdirSync(process.cwd() + env('AFRICA_SEEDS'));
+        fs.mkdirSync(process.cwd() + '/' + process.env['AFRICA_MIGRATIONS']);
+        fs.mkdirSync(process.cwd() + '/' + process.env['AFRICA_SEEDS']);
 
         db.create('_africa_migrations', () => {
           return {
