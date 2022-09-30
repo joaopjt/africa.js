@@ -19,7 +19,7 @@ const { green } = require('colorette');
 const { program } = require('commander');
 const { version } = require('../package.json');
 
-const Africa = require('../dist/index.min.js');
+const Africa = require('../dist/index.min.js').default;
 const { MySQL, MariaDB, PostgreSQL, SQLServer, SQLite } = require('../dist/index.min.js');
 
 program
