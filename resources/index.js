@@ -13,7 +13,7 @@ class Africa {
   }
 
   static spacer() {
-    if (this.string) this.string += ' ';
+    if (this.string.lenght) this.string += ' ';
   }
 
   static char(size = 1) {
