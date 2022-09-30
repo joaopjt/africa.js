@@ -89,13 +89,13 @@ program.command('init [database_client] [host] [user] [pass] [database_name]')
         db_connect(client, host, user, pass, db_name);
 
         db.create('_africa_seeders', {
-          'id': new Africa.int().auto_increment().primary_key().value,
-          'name': new Africa.varchar().value
+          'id': Africa.int().auto_increment().primary_key(),
+          'name': Africa.varchar()
         });
 
         db.create('_africa_migrations', {
-          'id': new Africa.int().auto_increment().primary_key().value,
-          'name': new Africa.varchar().value
+          'id': Africa.int().auto_increment().primary_key(),
+          'name': Africa.varchar()
         });
 
         console.log(green('Africa.js ORM initialized with success!'));
@@ -104,13 +104,13 @@ program.command('init [database_client] [host] [user] [pass] [database_name]')
         fs.mkdirSync(process.cwd() + '/' + process.env['AFRICA_SEEDS']);
 
         db.create('_africa_seeders', {
-          'id': new Africa.int().auto_increment().primary_key().value,
-          'name': new Africa.varchar().value
+          'id': Africa.int().auto_increment().primary_key(),
+          'name': Africa.varchar()
         });
 
         db.create('_africa_migrations', {
-          'id': new Africa.int().auto_increment().primary_key().value,
-          'name': new Africa.varchar().value
+          'id': Africa.int().auto_increment().primary_key(),
+          'name': Africa.varchar()
         });
 
         console.log(green('Africa.js ORM initialized with success!'));
