@@ -69,13 +69,8 @@ if (process.env['DB_CLIENT']) {
   db_connect(process.env['DB_CLIENT'], process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
 }
 
-program.command('init')
-  .description('Creates/read the .env configuration file')
-  .argument('<database_client>', 'database client (MySQL, SQLServer, SQLite, MariaDB, PostgreSQL)')
-  .argument('<host>', 'database host')
-  .argument('<user>', 'database connection user')
-  .argument('<pass>', 'database connection pass')
-  .argument('<database_name>', 'database name')
+program.command('init <database_client> <host> <user> <pass> <database_name>')
+  .description('Creates or Read the .env configuration file')
   .action((client, host, user, pass, db_name) => {
     fs.readFile(process.cwd() + '/.env', 'utf8', (err, file) => {
       if (err) {
