@@ -18,7 +18,7 @@
     "africa": "./bin/cli.js"
   },
   "repository": "https://github.com/joaopjt/africa.git",
-  "author": "João Julio",
+  "author": "João Pedro <joaopjt@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "parcel build",
@@ -28,11 +28,12 @@
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.18.10",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@parcel/babel-preset-env": "^2.7.0",
     "assert": "^2.0.0",
     "parcel": "^2.7.0"
   },
   "dependencies": {
+    "@parcel/babel-plugin-transform-runtime": "^2.7.0",
+    "@parcel/babel-preset-env": "^2.7.0",
     "colorette": "^2.0.19",
     "commander": "^9.3.0",
     "core-js": "^3.25.0",
