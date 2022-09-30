@@ -287,10 +287,10 @@ class Africa {
 };
 
 export {
-  Africa as default,
+  Africa,
   MySQL,
   MariaDB,
   PostgreSQL,
   SQLite,
-  SQLServer,
+  SQLServer
 };

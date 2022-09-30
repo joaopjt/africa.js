@@ -47,7 +47,7 @@
 107C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js\actual\instance\copy-within.js133090450050610000 0
 104C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\update-browserslist-db\package.json133052303108890000 0
 119C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\es-abstract\2015\IsCompatiblePropertyDescriptor.js133017823088060000 0
-68C:\Users\joaop\OneDrive\Documents\Development\africa.js\package.json133090455031130978 0
+68C:\Users\joaop\OneDrive\Documents\Development\africa.js\package.json133090501795371788 0
 112C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\es-abstract\5\AbstractEqualityComparison.js133017823088060000 0
 83C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\minipass-sized133090451030779750 1
 86C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\binary-extensions133090450340537458 1
@@ -85,7 +85,7 @@
 141C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\msal-common\dist\telemetry\server\ServerTelemetryRequest.d.ts.map133052303041350000 0
 103C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@babel\helper-annotate-as-pure\lib133090450482910334 1
 80C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\sqlite3\lib133090451083960615 1
-60C:\Users\joaop\OneDrive\Documents\Development\africa.js\dist133090497185702210 1
+60C:\Users\joaop\OneDrive\Documents\Development\africa.js\dist133090501954860189 1
 68C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules133090454974964471 1
 96C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js\es\object\assign.js133090450050610000 0
 89C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\terser\lib\output.js133058552029419998 0
@@ -203,7 +203,7 @@
 93C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\moment\locale\uz-latn.js133017823053380002 0
 99C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\source-map-support\register.js132821501998450000 0
 97C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\is-core-module\test\index.js133052303315720002 0
-74C:\Users\joaop\OneDrive\Documents\Development\africa.js\resources\index.js133090492375193725 0
+74C:\Users\joaop\OneDrive\Documents\Development\africa.js\resources\index.js133090501487243887 0
 124C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@jridgewell\sourcemap-codec\dist\sourcemap-codec.umd.js133052303058070000 0
 114C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js-compat\node_modules\.bin\browserslist133090454968484519 0
 80C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\ansi-styles133090451028199760 1
@@ -711,7 +711,7 @@
 78C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\call-bind133090450369527065 1
 100C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@parcel\package-manager\LICENSE133058551936270000 0
 103C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js\features\instance\slice.js133090450050610000 0
-93C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\humanize-ms\node_modules133090450276111557 1
+93C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\humanize-ms\node_modules133090450276141509 1
 119C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@jridgewell\sourcemap-codec\src\sourcemap-codec.ts133052303058070000 0
 78C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\callsites133090450370537071 1
 112C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\update-browserslist-db\check-npm-version.js133052303108890000 0
@@ -6054,7 +6054,7 @@
 111C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\posthtml-parser\dist\location-tracker.d.ts133058552043310002 0
 127C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\keyvault-keys\dist-esm\keyvault-keys\src\tracing.js133052303004500000 0
 109C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\posthtml-parser\dist\location-tracker.js133058552043310002 0
-90C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\posthtml\node_modules133090450276491550 1
+90C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\posthtml\node_modules133090450276651528 1
 90C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\posthtml\package.json133058552025240000 0
 91C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\is-regex\.editorconfig132821501967530000 0
 106C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\posthtml\node_modules\posthtml-parser133090450459444363 1
@@ -8480,7 +8480,7 @@
 125C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\mtest.c133058552028610000 0
 135C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js-compat\node_modules\caniuse-lite\data\features\wordwrap.js133090452226710000 0
 125C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@jridgewell\trace-mapping\dist\types\strip-filename.d.ts133052303057890000 0
-77C:\Users\joaop\OneDrive\Documents\Development\africa.js\dist\index.min.js.map133090497185682295 0
+77C:\Users\joaop\OneDrive\Documents\Development\africa.js\dist\index.min.js.map133090501954840197 0
 105C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\es-abstract\2020\IteratorComplete.js133017823088060000 0
 100C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js\actual\regexp\search.js133090450050610000 0
 126C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\lmdb\dependencies\lmdb-data-v1\libraries\liblmdb\mtest2.c133058552028610000 0
@@ -9399,7 +9399,7 @@
 101C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\get-symbol-description\.eslintrc132821501966910000 0
 104C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\get-symbol-description\CHANGELOG.md132821501966910000 0
 105C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js\es\typed-array\int8-array.js133090450050610000 0
-87C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\debug\node_modules133090450276071529 1
+87C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\debug\node_modules133090450276141509 1
 99C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\get-symbol-description\LICENSE132821501966910000 0
 104C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\get-symbol-description\package.json132821501966910000 0
 92C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\es-abstract\2022\Day.js133017823088060000 0
@@ -10081,7 +10081,7 @@
 127C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js-compat\node_modules\update-browserslist-db\LICENSE133090452223330000 0
 111C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\es-abstract\2021\FromPropertyDescriptor.js133017823088060000 0
 149C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js-compat\node_modules\caniuse-lite\data\features\css-media-range-syntax.js133090452226710000 0
-96C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\agentkeepalive\node_modules133090450275531521 1
+96C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\agentkeepalive\node_modules133090450275611553 1
 92C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\es-abstract\2021\Get.js133017823088060000 0
 106C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\es-abstract\2021\GetPromiseResolve.js133017823088060000 0
 104C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\es-abstract\2021\GetSubstitution.js133017823088060000 0
@@ -14279,7 +14279,7 @@
 105C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@babel\plugin-transform-dotall-regex133090450321077163 1
 97C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js\es\array\flat-map.js133090450050610000 0
 97C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js\es\array\for-each.js133090450050610000 0
-66C:\Users\joaop\OneDrive\Documents\Development\africa.js\bin\cli.js133090495216585016 0
+66C:\Users\joaop\OneDrive\Documents\Development\africa.js\bin\cli.js133090501304630543 0
 117C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\caniuse-lite\data\features\keyboardevent-code.js133052303109750000 0
 97C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js\es\array\includes.js133090450050610000 0
 97C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\core-js\es\array\index-of.js133090450050610000 0
@@ -15548,10 +15548,10 @@
 105C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@types\es-aggregate-error\index.d.ts133017823080410000 0
 99C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@babel\helper-validator-option133090450314297133 1
 92C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@npmcli\fs\node_modules133090454962564461 1
-107C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@types\es-aggregate-error\node_modules133090450275611553 1
+107C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@types\es-aggregate-error\node_modules133090450275631543 1
 92C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@npmcli\fs\package.json133017823427850000 0
 107C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@types\es-aggregate-error\package.json133017823080410000 0
-114C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@types\es-aggregate-error\node_modules\@types133090450275631543 1
+114C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@types\es-aggregate-error\node_modules\@types133090450275641537 1
 132C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@types\es-aggregate-error\node_modules\@types\node\package.json132821667674530000 0
 90C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@trysound\sax\LICENSE132821515791820000 0
 86C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@tootallnate\once133090450334312360 1
@@ -18205,7 +18205,7 @@
 133C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\msal-browser\dist\telemetry\BrowserPerformanceClient.d.ts133052303043080002 0
 137C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\msal-browser\dist\telemetry\BrowserPerformanceClient.d.ts.map133052303043080002 0
 131C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\msal-browser\dist\telemetry\BrowserPerformanceClient.js133052303043080002 0
-115C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@ampproject\remapping\node_modules\@jridgewell133090450275151619 1
+115C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@ampproject\remapping\node_modules\@jridgewell133090450275171517 1
 138C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\msal-browser\dist\telemetry\BrowserPerformanceMeasurement.d.ts133052303043080002 0
 142C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\msal-browser\dist\telemetry\BrowserPerformanceMeasurement.d.ts.map133052303043080002 0
 131C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\msal-browser\dist\request\AuthorizationCodeRequest.d.ts133052303043080002 0
@@ -18545,7 +18545,7 @@
 104C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-rest-pipeline\README.md133052303008829998 0
 128C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-rest-pipeline\types\3.1\core-rest-pipeline.d.ts133052303008829998 0
 112C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-rest-pipeline\node_modules\.bin133090454958224452 1
-120C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-rest-pipeline\node_modules\@tootallnate133090450275061521 1
+120C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-rest-pipeline\node_modules\@tootallnate133090450275141505 1
 129C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-rest-pipeline\node_modules\http-proxy-agent\dist133090450479940334 1
 134C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-rest-pipeline\node_modules\http-proxy-agent\README.md133052303008910000 0
 140C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-rest-pipeline\node_modules\http-proxy-agent\dist\agent.d.ts133052303008910000 0
@@ -18645,7 +18645,7 @@
 105C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-http-compat\CHANGELOG.md133052303008520000 0
 100C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-http-compat\LICENSE133052303008520000 0
 105C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-http-compat\package.json133052303008520000 0
-98C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-http-compat\types133090450277161565 1
+98C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-http-compat\types133090450285211897 1
 105C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-http-compat\types\latest133090450788905732 1
 127C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-http-compat\types\latest\core-http-compat.d.ts133052303008520000 0
 105C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\core-http-compat\dist-esm\src133090450791026844 1
@@ -18707,7 +18707,7 @@
 110C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@azure\abort-controller\dist\index.js.map133017823116830002 0
 90C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@ampproject\remapping133090450315747127 1
 95C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@ampproject\remapping\dist133090450486470344 1
-103C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@ampproject\remapping\node_modules133090450275131518 1
+103C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@ampproject\remapping\node_modules133090450275151619 1
 100C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@ampproject\remapping\README.md133052303067050000 0
 127C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@ampproject\remapping\node_modules\@jridgewell\gen-mapping133090450324647120 1
 135C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\@ampproject\remapping\node_modules\@jridgewell\gen-mapping\LICENSE133052303090450000 0
@@ -18758,7 +18758,7 @@
 84C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\.bin\semver.cmd133090454972504449 0
 82C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\.bin\svgo.cmd133090454974254571 0
 82C:\Users\joaop\OneDrive\Documents\Development\africa.js\node_modules\.bin\uuid.cmd133090454974404468 0
-73C:\Users\joaop\OneDrive\Documents\Development\africa.js\dist\index.min.js133090497185612219 0
+73C:\Users\joaop\OneDrive\Documents\Development\africa.js\dist\index.min.js133090501954760183 0
 65C:\Users\joaop\OneDrive\Documents\Development\africa.js\bin\files133036082420603496 1
 74C:\Users\joaop\OneDrive\Documents\Development\africa.js\bin\files\.gitkeep133036082420607493 0
 78C:\Users\joaop\OneDrive\Documents\Development\africa.js\bin\files\migration.js133090380626156560 0
