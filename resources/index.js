@@ -16,23 +16,16 @@ class Africa {
     if (this.string) this.string += ' ';
   }
 
-  static int() {
-    this.spacer();
-    this.string += 'int';
-
-    return this || this.string;
-  }
-
   static char(size) {
     this.spacer();
-    this.string += `char(${size})`;
+    this.string += `CHAR(${size})`;
 
     return this || this.string;
   }
 
   static varchar(size = 255) {
     this.spacer();
-    this.string += `varchar(${size})`;
+    this.string += `VARCHAR(${size})`;
 
     return this || this.string;
   }
