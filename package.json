@@ -1,6 +1,6 @@
 {
   "name": "africa.js",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "A fulfilled query builder and ORM with support for SQL language based databases, such as SQL Server, SQLite, MySQL, MariaDB and PostgreSQL.",
   "keywords": [
     "africa",
