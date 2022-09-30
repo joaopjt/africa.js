@@ -1,9 +1,7 @@
 exports.up = (db, Africa) => {
-  db.create('table_name', () => {
-    return {
-      'id': Africa.int().auto_increment().primary_key(),
-      'name': Africa.varchar(255)
-    }
+  db.create('table_name', {
+    'id': Africa.int().auto_increment().primary_key(),
+    'name': Africa.varchar(255)
   });
 }
 

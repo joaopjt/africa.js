@@ -88,35 +88,28 @@ program.command('init [database_client] [host] [user] [pass] [database_name]')
 
         db_connect(client, host, user, pass, db_name);
 
-        db.create('_africa_seeders', () => {
-          return {
-            'id': Africa.int().auto_increment().primary_key(),
-            'name': Africa.varchar()
-          }
+        db.create('_africa_seeders', {
+          'id': Africa.int().auto_increment().primary_key(),
+          'name': Africa.varchar()
         });
 
-        db.create('_africa_migrations', () => {
-          return {
-            'id': Africa.int().auto_increment().primary_key(),
-            'name': Africa.varchar()
-          }
+        db.create('_africa_migrations', {
+          'id': Africa.int().auto_increment().primary_key(),
+          'name': Africa.varchar()
         });
+
       } else {
         fs.mkdirSync(process.cwd() + '/' + process.env['AFRICA_MIGRATIONS']);
         fs.mkdirSync(process.cwd() + '/' + process.env['AFRICA_SEEDS']);
 
-        db.create('_africa_migrations', () => {
-          return {
-            'id': Africa.int().auto_increment().primary_key(),
-            'name': Africa.varchar()
-          }
+        db.create('_africa_seeders', {
+          'id': Africa.int().auto_increment().primary_key(),
+          'name': Africa.varchar()
         });
 
-        db.create('_africa_seeders', () => {
-          return {
-            'id': Africa.int().auto_increment().primary_key(),
-            'name': Africa.varchar()
-          }
+        db.create('_africa_migrations', {
+          'id': Africa.int().auto_increment().primary_key(),
+          'name': Africa.varchar()
         });
       }
     });
