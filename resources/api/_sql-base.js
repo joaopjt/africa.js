@@ -16,7 +16,7 @@ export default class SQL {
     let collumns = '';
     if (!table_name) throw new Error('Expected table name but none was given.');
 
-    collumns_object.forEach((collumn, collumn_type) => {
+    Object.entries(collumns_object).forEach((collumn, collumn_type) => {
       collumns += `${collumn} ${collumn_type},`;
     });
 
