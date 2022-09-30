@@ -16,7 +16,7 @@ class Africa {
     if (this.string) this.string += ' ';
   }
 
-  static char(size) {
+  static char(size = 1) {
     this.spacer();
     this.string += `CHAR(${size})`;
 
@@ -30,14 +30,14 @@ class Africa {
     return this || this.string;
   }
 
-  static binary(size) {
+  static binary(size = 8000) {
     this.spacer();
     this.string += `BINARY(${size})`;
 
     return this || this.string;
   }
 
-  static varbinary(size) {
+  static varbinary(size = 2000000000) {
     this.spacer();
     this.string += `VARBINARY(${size})`;
 
@@ -79,63 +79,63 @@ class Africa {
     return this || this.string;
   }
 
-  static smallint(size) {
+  static smallint(size = 5) {
     this.spacer();
     this.string += `SMALLINT(${size})`;
 
     return this || this.string;
   }
 
-  static mediumint(size) {
+  static mediumint(size = 8) {
     this.spacer();
     this.string += `MEDIUMINT(${size})`;
 
     return this || this.string;
   }
 
-  static int(size) {
+  static int(size = 11) {
     this.spacer();
     this.string += `INT(${size})`;
 
     return this || this.string;
   }
 
-  static integer(size) {
+  static integer(size = 11) {
     this.spacer();
     this.string += `INTEGER(${size})`;
 
     return this || this.string;
   }
 
-  static bigint(size) {
+  static bigint(size = 255) {
     this.spacer();
     this.string += `BIGINT(${size})`;
 
     return this || this.string;
   }
 
-  static float(size, d) {
+  static float(size = 23) {
     this.spacer();
-    this.string += `FLOAT(${size}, ${d})`;
+    this.string += `FLOAT(${size})`;
 
     return this || this.string;
   }
 
-  static double(size, d) {
+  static double(size = 16, d = 4) {
     this.spacer();
     this.string += `DOUBLE(${size}, ${d})`;
 
     return this || this.string;
   }
 
-  static double_precision(size, d) {
+  static double_precision(size = 0, d = 0) {
     this.spacer();
     this.string += `DOUBLE PRECISION(${size}, ${d})`;
 
     return this || this.string;
   }
 
-  static decimal(size, d) {
+  static decimal(size = 10, d = 0) {
     this.spacer();
     this.string += `DECIMAL(${size}, ${d})`;
 
@@ -149,30 +149,30 @@ class Africa {
     return this || this.string;
   }
 
-  static bit(size) {
+  static bit(size = 1) {
     this.spacer();
     this.string += `BIT(${size})`;
 
     return this || this.string;
   }
 
-  static blob(size) {
+  static blob(size = 65535) {
     this.spacer();
     this.string += `BLOB(${size})`;
 
     return this || this.string;
   }
 
-  static mediumtext(size) {
+  static mediumtext(size = 16777215) {
     this.spacer();
-    this.string += `MEDIUMTEXT`;
+    this.string += `MEDIUMTEXT(${size})`;
 
     return this || this.string;
   }
 
-  static mediumblob(size) {
+  static mediumblob(size = 16777215) {
     this.spacer();
-    this.string += `MEDIUMBLOB`;
+    this.string += `MEDIUMBLOB(${size})`;
 
     return this || this.string;
   }
@@ -236,21 +236,21 @@ class Africa {
     return this || this.string;
   }
 
-  static datetime(format) {
+  static datetime(format = 'YYYY-MM-DD hh:mm:ss') {
     this.spacer();
     this.string += `DATETIME(${format})`;
 
     return this || this.string;
   }
 
-  static timestamp(format) {
+  static timestamp(format = 'YYYY-MM-DD hh:mm:ss') {
     this.spacer();
     this.string += `TIMESTAMP(${format})`;
 
     return this || this.string;
   }
 
-  static time(format) {
+  static time(format = 'hh:mm:ss') {
     this.spacer();
     this.string += `TIME(${format})`;
 
@@ -267,6 +267,13 @@ class Africa {
   static auto_increment() {
     this.spacer();
     this.string += `AUTO_INCREMENT`;
+
+    return this || this.string;
+  }
+
+  static default(value) {
+    this.spacer();
+    this.string += (value) ? `DEFAULT ${value}` : `DEFAULT`;
 
     return this || this.string;
   }
