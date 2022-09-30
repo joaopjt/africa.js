@@ -1,11 +1,11 @@
 # :earth_africa: África.js
-África is a fulfilled query builder that runs over SQL Server, SQLite, MySQL, MariaDB and PostgreSQL.
+África is a fulfilled ORM and query builder that runs over SQL Server, SQLite, MySQL, MariaDB and PostgreSQL.
 
 ## CLI
 
 To install the CLI, you need to run on your bash:
 ```bash
-  npm install -g africa.js
+$ npm install -g africa.js
 ```
 
 ### Init
@@ -16,7 +16,10 @@ The ```init``` command, starts the CLI creating a ***.env*** file and the folder
 $ africa init <database_client> <host> <user> <password> <database_name>
 ```
 
-Or, if you already have a ***.env*** file, you can just run ```$ africa init```.
+Or, if you already have a ***.env*** file, you can just run:
+```bash
+$ africa init
+```
 
 ### Create Migration
 
@@ -75,10 +78,10 @@ Create a new table:
 ```javascript
   mysql
     .create('table_name', {
-      'id': africa.int().null(false).primary_key().auto_increment(),
-      'name': africa.varchar(255).null(false), // default value of varchar()
-      'age': africa.varchar(255).null(false),
-      'email': africa.varchar(255).null(false),
+      'id': Africa.int().null(false).primary_key().auto_increment(),
+      'name': Africa.varchar(255).null(false),
+      'age': Africa.varchar(255).null(false),
+      'email': Africa.varchar(255).null(false)
     });
 ```
 

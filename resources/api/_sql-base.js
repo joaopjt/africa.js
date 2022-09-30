@@ -107,6 +107,30 @@ export default class SQL {
     return this || this.query();
   }
 
+  order_by(collumn) {
+    const order_by = ` ORDER BY ${collumn}`;
+
+    this.query_string += order_by;
+
+    return this || this.query();
+  }
+
+  asc() {
+    const asc = ` ASC`;
+
+    this.query_string += asc;
+
+    return this || this.query();
+  }
+
+  desc() {
+    const desc = ` DESC`;
+
+    this.query_string += desc;
+
+    return this || this.query();
+  }
+
   join(table, object) {
     let relationship = '';
     const join = ` INNER JOIN ${table} ON ${relationship}`;

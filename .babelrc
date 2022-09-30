@@ -1,0 +1,12 @@
+{
+  // The below preset need to be installed
+  // and is automatically used after in node_modules,
+  // so we leave it commented.
+  // 
+  // "presets": [
+  //   "@parcel/babel-preset-env"
+  // ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties"
+  ]
+}

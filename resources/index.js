@@ -9,273 +9,280 @@ import SQLServer from './api/sqlserver';
 
 class Africa {
   constructor() {
-    this.string = '';
+    this.value = '';
   }
 
   static spacer() {
-    if (this.string.length) this.string += ' ';
+    if (this.value !== '') this.value += ' ';
+  }
+
+  static value() {
+    return this.value;
   }
 
   static char(size = 1) {
     this.spacer();
-    this.string += `CHAR(${size})`;
+    this.value += `CHAR(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static varchar(size = 255) {
     this.spacer();
-    this.string += `VARCHAR(${size})`;
+    this.value += `VARCHAR(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static binary(size = 8000) {
     this.spacer();
-    this.string += `BINARY(${size})`;
+    this.value += `BINARY(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static varbinary(size = 2000000000) {
     this.spacer();
-    this.string += `VARBINARY(${size})`;
+    this.value += `VARBINARY(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static tinyblob() {
     this.spacer();
-    this.string += `TINYBLOB`;
+    this.value += `TINYBLOB`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static tinytext() {
     this.spacer();
-    this.string += `TINYTEXT`;
+    this.value += `TINYTEXT`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static tinyint() {
     this.spacer();
-    this.string += `TINYINT`;
+    this.value += `TINYINT`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static bool() {
     this.spacer();
-    this.string += `BOOL`;
+    this.value += `BOOL`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static boolean() {
     this.spacer();
-    this.string += `BOOLEAN`;
+    this.value += `BOOLEAN`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static smallint(size = 5) {
     this.spacer();
-    this.string += `SMALLINT(${size})`;
+    this.value += `SMALLINT(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static mediumint(size = 8) {
     this.spacer();
-    this.string += `MEDIUMINT(${size})`;
+    this.value += `MEDIUMINT(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static int(size = 11) {
     this.spacer();
-    this.string += `INT(${size})`;
+    this.value += `INT(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static integer(size = 11) {
     this.spacer();
-    this.string += `INTEGER(${size})`;
+    this.value += `INTEGER(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static bigint(size = 255) {
     this.spacer();
-    this.string += `BIGINT(${size})`;
+    this.value += `BIGINT(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static float(size = 23) {
     this.spacer();
-    this.string += `FLOAT(${size})`;
+    this.value += `FLOAT(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static double(size = 16, d = 4) {
     this.spacer();
-    this.string += `DOUBLE(${size}, ${d})`;
+    this.value += `DOUBLE(${size}
+     ${d})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static double_precision(size = 0, d = 0) {
     this.spacer();
-    this.string += `DOUBLE PRECISION(${size}, ${d})`;
+    this.value += `DOUBLE PRECISION(${size}
+     ${d})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static decimal(size = 10, d = 0) {
     this.spacer();
-    this.string += `DECIMAL(${size}, ${d})`;
+    this.value += `DECIMAL(${size}
+     ${d})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static text() {
     this.spacer();
-    this.string += `TEXT`;
+    this.value += `TEXT`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static bit(size = 1) {
     this.spacer();
-    this.string += `BIT(${size})`;
+    this.value += `BIT(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static blob(size = 65535) {
     this.spacer();
-    this.string += `BLOB(${size})`;
+    this.value += `BLOB(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static mediumtext(size = 16777215) {
     this.spacer();
-    this.string += `MEDIUMTEXT(${size})`;
+    this.value += `MEDIUMTEXT(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static mediumblob(size = 16777215) {
     this.spacer();
-    this.string += `MEDIUMBLOB(${size})`;
+    this.value += `MEDIUMBLOB(${size})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static longtext() {
     this.spacer();
-    this.string += `LONGTEXT`;
+    this.value += `LONGTEXT`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static longblob() {
     this.spacer();
-    this.string += `LONGBLOB`;
+    this.value += `LONGBLOB`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static enum(list) {
     this.spacer();
-    this.string += `ENUM(${list})`;
+    this.value += `ENUM(${list})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static set(list) {
     this.spacer();
-    this.string += `SET(${list})`;
+    this.value += `SET(${list})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static null(n = true) {
     this.spacer();
-    if (!n) this.string += 'NOT ';
+    if (!n) this.value += 'NOT ';
 
-    this.string += `NULL`;
+    this.value += `NULL`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static not_null() {
     this.spacer();
 
-    this.string += `NOT NULL`;
+    this.value += `NOT NULL`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static primary_key() {
     this.spacer();
-    this.string += 'PRIMARY KEY';
+    this.value += 'PRIMARY KEY';
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static date() {
     this.spacer();
-    this.string += 'DATE';
+    this.value += 'DATE';
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static datetime(format = 'YYYY-MM-DD hh:mm:ss') {
     this.spacer();
-    this.string += `DATETIME(${format})`;
+    this.value += `DATETIME(${format})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static timestamp(format = 'YYYY-MM-DD hh:mm:ss') {
     this.spacer();
-    this.string += `TIMESTAMP(${format})`;
+    this.value += `TIMESTAMP(${format})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static time(format = 'hh:mm:ss') {
     this.spacer();
-    this.string += `TIME(${format})`;
+    this.value += `TIME(${format})`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static year() {
     this.spacer();
-    this.string += `YEAR`;
+    this.value += `YEAR`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static auto_increment() {
     this.spacer();
-    this.string += `AUTO_INCREMENT`;
+    this.value += `AUTO_INCREMENT`;
 
-    return this || this.string;
+    return this || this.value();
   }
 
   static default(value) {
     this.spacer();
-    this.string += (value) ? `DEFAULT ${value}` : `DEFAULT`;
+    this.value += (value) ? `DEFAULT ${value}` : `DEFAULT`;
 
-    return this || this.string;
+    return this || this.value();
   }
 };
 

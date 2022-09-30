@@ -70,7 +70,7 @@ if (process.env['DB_CLIENT']) {
 }
 
 program.command('init [database_client] [host] [user] [pass] [database_name]')
-  .description('Creates or Read the .env configuration file')
+  .description('Creates or Read the .env configuration file and setups the ORM')
   .action((client, host, user, pass, db_name) => {
     fs.readFile(process.cwd() + '/.env', 'utf8', (err, file) => {
       if (err) {
@@ -89,28 +89,31 @@ program.command('init [database_client] [host] [user] [pass] [database_name]')
         db_connect(client, host, user, pass, db_name);
 
         db.create('_africa_seeders', {
-          'id': Africa.int().auto_increment().primary_key(),
-          'name': Africa.varchar()
+          'id': new Africa.int().auto_increment().primary_key().value,
+          'name': new Africa.varchar().value
         });
 
         db.create('_africa_migrations', {
-          'id': Africa.int().auto_increment().primary_key(),
-          'name': Africa.varchar()
+          'id': new Africa.int().auto_increment().primary_key().value,
+          'name': new Africa.varchar().value
         });
 
+        console.log(green('Africa.js ORM initialized with success!'));
       } else {
         fs.mkdirSync(process.cwd() + '/' + process.env['AFRICA_MIGRATIONS']);
         fs.mkdirSync(process.cwd() + '/' + process.env['AFRICA_SEEDS']);
 
         db.create('_africa_seeders', {
-          'id': Africa.int().auto_increment().primary_key(),
-          'name': Africa.varchar()
+          'id': new Africa.int().auto_increment().primary_key().value,
+          'name': new Africa.varchar().value
         });
 
         db.create('_africa_migrations', {
-          'id': Africa.int().auto_increment().primary_key(),
-          'name': Africa.varchar()
+          'id': new Africa.int().auto_increment().primary_key().value,
+          'name': new Africa.varchar().value
         });
+
+        console.log(green('Africa.js ORM initialized with success!'));
       }
     });
   });
@@ -171,6 +174,30 @@ program.command('create-seed')
     }
   });
 
+program.command('rollback')
+  .description ('Rollback all migrations files in the database')
+  .action(() => {
+    if (!db) {
+      console.error('You need to init the ORM before of running `africa rollback`.');
+    } else {
+      let migrated_files = db.select('name').from('_africa_migrations').order_by('id').desc();
+
+      fs.readdir(process.cwd() + '/' + process.env['AFRICA_MIGRATIONS'], (err, files) => {
+        files.forEach(file => {
+          let migration = require(process.cwd() + '/' + process.env['AFRICA_MIGRATIONS'] + '/' + file);
+
+          migration.down(db, Africa);
+
+          db.delete().from('_africa_migrations').where({ name: file });
+
+          console.log(green(`Rollback of '${file}' conclued with success.`));
+        });
+      });
+
+      console.log(green(`Rollback task finished with success.`));
+    }
+  });
+
 program.command('migrate')
   .description ('Migrate all migrations files to the database')
   .action(() => {
@@ -179,9 +206,7 @@ program.command('migrate')
     } else {
       let migrated_files = db.select('name').from('_africa_migrations');
 
-      console.log(migrated_files);
-
-      fs.readdir(process.env['AFRICA_MIGRATIONS'], (err, files) => {
+      fs.readdir(process.cwd() + '/' + process.env['AFRICA_MIGRATIONS'], (err, files) => {
         files.forEach(file => {
           if (!migrated_files.find(f => f.name === file)) {
             let migration = require(process.cwd() + process.env['AFRICA_MIGRATIONS'] + file);
@@ -203,7 +228,7 @@ program.command('seed')
     } else {
       let migrated_seeds = db.select('name').from('_africa_seeders');
 
-      fs.readdir(process.env['AFRICA_SEEDS'], (err, files) => {
+      fs.readdir(process.cwd() + '/' + process.env['AFRICA_SEEDS'], (err, files) => {
         files.forEach(file => {
           if (!migrated_seeds.find(s => s.name === file)) {
             let { table, seed } = require(process.cwd() + process.env['AFRICA_SEEDS'] + file);
