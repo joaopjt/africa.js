@@ -12,8 +12,6 @@ export default class MariaDB extends SQL {
     });
 
     this.conn = undefined;
-
-    this.connect();
   }
 
   async connect() {
@@ -21,6 +19,8 @@ export default class MariaDB extends SQL {
   }
 
   async query() {
+    await this.connect();
+
     let results = null;
 
     try {
@@ -28,6 +28,8 @@ export default class MariaDB extends SQL {
     } catch(err) {
       throw err;
     }
+
+    this.conn.release();
 
     return results;
   }

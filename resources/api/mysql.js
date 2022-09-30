@@ -10,17 +10,17 @@ export default class MySQL extends SQL {
       password,
       database
     });
-
-    this.conn.connect();
   }
 
   query() {
-    this.conn.query(this.query_string, function (error, results, fields) {
-      this.conn.end();
+    this.conn.connect();
 
+    this.conn.query(this.query_string, function (error, results, fields) {
       if (error) throw error;
 
       return results;
     });
+
+    this.conn.end();
   }
 }

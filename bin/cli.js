@@ -71,11 +71,11 @@ if (process.env['DB_CLIENT']) {
 
 program.command('init')
   .description('Creates/read the .env configuration file')
-  .option('<database_client>', 'database client (MySQL, SQLServer, SQLite, MariaDB, PostgreSQL)')
-  .option('<host>', 'database host')
-  .option('<user>', 'database connection user')
-  .option('<pass>', 'database connection pass')
-  .option('<database_name>', 'database name')
+  .argument('<database_client>', 'database client (MySQL, SQLServer, SQLite, MariaDB, PostgreSQL)')
+  .argument('<host>', 'database host')
+  .argument('<user>', 'database connection user')
+  .argument('<pass>', 'database connection pass')
+  .argument('<database_name>', 'database name')
   .action((client, host, user, pass, db_name) => {
     fs.readFile(process.cwd() + '/.env', 'utf8', (err, file) => {
       if (err) {
@@ -136,7 +136,7 @@ program.command('create-migration')
     } else {
       let date = moment().format('YYYYMMDD_HHmmss');
 
-      filename = `${date}_${filename}.js`;
+      filename = `${date}-${filename}.js`;
 
       if (!db.select().from('_africa_migrations')) {
         db.create('_africa_migrations', {
@@ -164,7 +164,7 @@ program.command('create-seed')
     } else {
       let date = moment().format('YYYYMMDD_HHmmss');
 
-      filename = `${date}_${filename}.js`;
+      filename = `${date}-${filename}.js`;
 
       if (!db.select().from('_africa_seeders')) {
         db.create('_africa_seeders', {

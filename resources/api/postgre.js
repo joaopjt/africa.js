@@ -11,15 +11,17 @@ export default class PostgreSQL extends SQL {
         password,
         database
     });
-
-    this.client.connect();
   }
 
   query() {
+    this.client.connect();
+
     this.client.query(this.query_string)
       .then(res => {
         return res.rows[0];
       })
       .catch(err => { throw err });
+
+    this.client.release();
   }
 }

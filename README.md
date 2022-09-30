@@ -1,7 +1,61 @@
 # :earth_africa: África.js
 África is a fulfilled query builder that runs over SQL Server, SQLite, MySQL, MariaDB and PostgreSQL.
 
-## Getting Started
+## CLI
+
+To install the CLI, you need to run on your bash:
+```bash
+  npm install -g africa.js
+```
+
+### Init
+
+The ```init``` command, starts the CLI creating a ***.env*** file and the folders for migrations and seeds. You can change it after the .env file is created.
+
+```bash
+$ africa init <database_client> <host> <user> <password> <database_name>
+```
+
+### Create Migration
+
+To create a migration, you need to run:
+
+```bash
+$ africa create-migration example_migration
+'20010911_084600-example_migration' migration file created with success!
+```
+
+### Create Seeder
+
+To create a seeder, you can run:
+
+```bash
+$ africa create-seeder example_seed
+'20010911_100101-example_seed' seed file created with success!
+```
+
+### Migrate
+
+To run the migrations in the folder, you need to run:
+```bash
+$ africa migrate
+```
+
+### Seed
+
+To run the seeders in the folder, you need to run:
+```bash
+$ africa seed
+```
+
+### Rollback
+
+To rollback the migrations (in the database), you can run:
+```bash
+$ africa rollback
+```
+
+## The API
 
 The API follows the SQL syntax, so we get the same API methods for every database client.
 
