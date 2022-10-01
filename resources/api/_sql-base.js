@@ -1,13 +1,13 @@
 export default class SQL {
   constructor() {
     this.table = '';
-    this.collums = '*';
+    this.collumns = '*';
     this.where = ``;
     this.query_string = `SELECT ${this.collumns} FROM ${this.table}`;
   }
 
   select(collumns) {
-    if (collumns) this.collums = collumns;
+    if (collumns) this.collumns = collumns;
 
     return this;
   }
