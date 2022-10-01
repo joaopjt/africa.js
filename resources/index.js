@@ -12,120 +12,120 @@ class Africa {
     this.value = ``;
   }
 
-  static spacer() {
+  spacer() {
     if (this.value !== '') this.value += ' ';
   }
 
-  static result() {
+  result() {
     return this.value;
   }
 
-  static char(size = 1) {
+  char(size = 1) {
     this.spacer();
     this.value += `CHAR(${size})`;
 
     return this || this.result();
   }
 
-  static varchar(size = 255) {
+  varchar(size = 255) {
     this.spacer();
     this.value += `VARCHAR(${size})`;
 
     return this || this.result();
   }
 
-  static binary(size = 8000) {
+  binary(size = 8000) {
     this.spacer();
     this.value += `BINARY(${size})`;
 
     return this || this.result();
   }
 
-  static varbinary(size = 2000000000) {
+  varbinary(size = 2000000000) {
     this.spacer();
     this.value += `VARBINARY(${size})`;
 
     return this || this.result();
   }
 
-  static tinyblob() {
+  tinyblob() {
     this.spacer();
     this.value += `TINYBLOB`;
 
     return this || this.result();
   }
 
-  static tinytext() {
+  tinytext() {
     this.spacer();
     this.value += `TINYTEXT`;
 
     return this || this.result();
   }
 
-  static tinyint() {
+  tinyint() {
     this.spacer();
     this.value += `TINYINT`;
 
     return this || this.result();
   }
 
-  static bool() {
+  bool() {
     this.spacer();
     this.value += `BOOL`;
 
     return this || this.result();
   }
 
-  static boolean() {
+  boolean() {
     this.spacer();
     this.value += `BOOLEAN`;
 
     return this || this.result();
   }
 
-  static smallint(size = 5) {
+  smallint(size = 5) {
     this.spacer();
     this.value += `SMALLINT(${size})`;
 
     return this || this.result();
   }
 
-  static mediumint(size = 8) {
+  mediumint(size = 8) {
     this.spacer();
     this.value += `MEDIUMINT(${size})`;
 
     return this || this.result();
   }
 
-  static int(size = 11) {
+  int(size = 11) {
     this.spacer();
     this.value += `INT(${size})`;
 
     return this || this.result();
   }
 
-  static integer(size = 11) {
+  integer(size = 11) {
     this.spacer();
     this.value += `INTEGER(${size})`;
 
     return this || this.result();
   }
 
-  static bigint(size = 255) {
+  bigint(size = 255) {
     this.spacer();
     this.value += `BIGINT(${size})`;
 
     return this || this.result();
   }
 
-  static float(size = 23) {
+  float(size = 23) {
     this.spacer();
     this.value += `FLOAT(${size})`;
 
     return this || this.result();
   }
 
-  static double(size = 16, d = 4) {
+  double(size = 16, d = 4) {
     this.spacer();
     this.value += `DOUBLE(${size}
      ${d})`;
@@ -133,7 +133,7 @@ class Africa {
     return this || this.result();
   }
 
-  static double_precision(size = 0, d = 0) {
+  double_precision(size = 0, d = 0) {
     this.spacer();
     this.value += `DOUBLE PRECISION(${size}
      ${d})`;
@@ -141,7 +141,7 @@ class Africa {
     return this || this.result();
   }
 
-  static decimal(size = 10, d = 0) {
+  decimal(size = 10, d = 0) {
     this.spacer();
     this.value += `DECIMAL(${size}
      ${d})`;
@@ -149,70 +149,70 @@ class Africa {
     return this || this.result();
   }
 
-  static text() {
+  text() {
     this.spacer();
     this.value += `TEXT`;
 
     return this || this.result();
   }
 
-  static bit(size = 1) {
+  bit(size = 1) {
     this.spacer();
     this.value += `BIT(${size})`;
 
     return this || this.result();
   }
 
-  static blob(size = 65535) {
+  blob(size = 65535) {
     this.spacer();
     this.value += `BLOB(${size})`;
 
     return this || this.result();
   }
 
-  static mediumtext(size = 16777215) {
+  mediumtext(size = 16777215) {
     this.spacer();
     this.value += `MEDIUMTEXT(${size})`;
 
     return this || this.result();
   }
 
-  static mediumblob(size = 16777215) {
+  mediumblob(size = 16777215) {
     this.spacer();
     this.value += `MEDIUMBLOB(${size})`;
 
     return this || this.result();
   }
 
-  static longtext() {
+  longtext() {
     this.spacer();
     this.value += `LONGTEXT`;
 
     return this || this.result();
   }
 
-  static longblob() {
+  longblob() {
     this.spacer();
     this.value += `LONGBLOB`;
 
     return this || this.result();
   }
 
-  static enum(list) {
+  enum(list) {
     this.spacer();
     this.value += `ENUM(${list})`;
 
     return this || this.result();
   }
 
-  static set(list) {
+  set(list) {
     this.spacer();
     this.value += `SET(${list})`;
 
     return this || this.result();
   }
 
-  static null(n = true) {
+  null(n = true) {
     this.spacer();
     if (!n) this.value += 'NOT ';
 
@@ -221,7 +221,7 @@ class Africa {
     return this || this.result();
   }
 
-  static not_null() {
+  not_null() {
     this.spacer();
 
     this.value += `NOT NULL`;
@@ -229,56 +229,56 @@ class Africa {
     return this || this.result();
   }
 
-  static primary_key() {
+  primary_key() {
     this.spacer();
     this.value += 'PRIMARY KEY';
 
     return this || this.result();
   }
 
-  static date() {
+  date() {
     this.spacer();
     this.value += 'DATE';
 
     return this || this.result();
   }
 
-  static datetime(format = 'YYYY-MM-DD hh:mm:ss') {
+  datetime(format = 'YYYY-MM-DD hh:mm:ss') {
     this.spacer();
     this.value += `DATETIME(${format})`;
 
     return this || this.result();
   }
 
-  static timestamp(format = 'YYYY-MM-DD hh:mm:ss') {
+  timestamp(format = 'YYYY-MM-DD hh:mm:ss') {
     this.spacer();
     this.value += `TIMESTAMP(${format})`;
 
     return this || this.result();
   }
 
-  static time(format = 'hh:mm:ss') {
+  time(format = 'hh:mm:ss') {
     this.spacer();
     this.value += `TIME(${format})`;
 
     return this || this.result();
   }
 
-  static year() {
+  year() {
     this.spacer();
     this.value += `YEAR`;
 
     return this || this.result();
   }
 
-  static auto_increment() {
+  auto_increment() {
     this.spacer();
     this.value += `AUTO_INCREMENT`;
 
     return this || this.result();
   }
 
-  static default(value) {
+  default(value) {
     this.spacer();
     this.value += (value) ? `DEFAULT ${value}` : `DEFAULT`;
 

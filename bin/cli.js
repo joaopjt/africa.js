@@ -8,8 +8,6 @@
  * @format
  */
 
-'use strict';
-
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -28,7 +26,7 @@ program
 
 let db = undefined;
 let env_string = (client, host, user, pass, db) => {
-  return `AFRICA_MIGRATIONS="migrations/"\nAFRICA_SEEDS="seeds/"\n\nDB_CLIENT="${client}"\nDB_HOST="${host}"\nDB_USER="${user}"\nDB_PASS="${pass}"\nDB_DATABASE="${db}"`;
+  return `AFRICA_MIGRATIONS="migrations/"\nAFRICA_SEEDS="seeds/"\n\nDB_CLIENT="${client}"\nDB_HOST="${host}"\nDB_USER="${user}"\nDB_PASS="${pass}"\nDB_NAME="${db}"`;
 };
 
 let db_connect = function(db_client, host, user, pass ,db_name) {
@@ -65,7 +63,7 @@ let db_connect = function(db_client, host, user, pass ,db_name) {
 };
 
 if (process.env['DB_CLIENT']) {
-  db_connect(process.env['DB_CLIENT'], process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_DATABASE']);
+  db_connect(process.env['DB_CLIENT'], process.env['DB_HOST'], process.env['DB_USER'], process.env['DB_PASS'], process.env['DB_NAME']);
 }
 
 program.command('init [database_client] [host] [user] [pass] [database_name]')
@@ -88,13 +86,13 @@ program.command('init [database_client] [host] [user] [pass] [database_name]')
         db_connect(client, host, user, pass, db_name);
 
         db.create('_africa_seeders', {
-          'id': Africa.int().auto_increment().primary_key(),
-          'name': Africa.varchar()
+          'id': new Africa().int().auto_increment().primary_key().value,
+          'name': new Africa().varchar().value
         });
 
         db.create('_africa_migrations', {
-          'id': Africa.int().auto_increment().primary_key(),
-          'name': Africa.varchar()
+          'id': new Africa().int().auto_increment().primary_key().value,
+          'name': new Africa().varchar().value
         });
 
         console.log(green('Africa.js ORM initialized with success!'));
@@ -103,13 +101,13 @@ program.command('init [database_client] [host] [user] [pass] [database_name]')
         fs.mkdirSync(process.cwd() + '/' + process.env['AFRICA_SEEDS']);
 
         db.create('_africa_seeders', {
-          'id': Africa.int().auto_increment().primary_key(),
-          'name': Africa.varchar()
+          'id': new Africa().int().auto_increment().primary_key().value,
+          'name': new Africa().varchar().value
         });
 
         db.create('_africa_migrations', {
-          'id': Africa.int().auto_increment().primary_key(),
-          'name': Africa.varchar()
+          'id': new Africa().int().auto_increment().primary_key().value,
+          'name': new Africa().varchar().value
         });
 
         console.log(green('Africa.js ORM initialized with success!'));

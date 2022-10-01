@@ -78,10 +78,10 @@ Create a new table:
 ```javascript
   mysql
     .create('table_name', {
-      'id': Africa.int().null(false).primary_key().auto_increment(),
-      'name': Africa.varchar(255).null(false),
-      'age': Africa.varchar(255).null(false),
-      'email': Africa.varchar(255).null(false)
+      'id': new Africa().int().null(false).primary_key().auto_increment().value,
+      'name': new Africa().varchar(255).null(false).value,
+      'age': new Africa().varchar(255).null(false).value,
+      'email': new Africa().varchar(255).null(false).value
     });
 ```
 

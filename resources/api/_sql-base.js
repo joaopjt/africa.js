@@ -14,10 +14,17 @@ export default class SQL {
 
   create(table_name, collumns_object) {
     let collumns = '';
+    let count = 0;
     if (!table_name) throw new Error('Expected table name but none was given.');
 
-    Object.entries(collumns_object).forEach((collumn, collumn_type) => {
-      collumns += `${collumn} ${collumn_type},`;
+    console.log(collumns_object);
+
+    Object.entries(collumns_object).forEach((collumn) => {
+      if (count >= 1) collumns += ', ';
+
+      collumns += `${collumn[0]} ${collumn[1]}`;
+
+      count++;
     });
 
     this.query_string = `CREATE TABLE ${table_name} (${collumns})`;
