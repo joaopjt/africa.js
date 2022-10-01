@@ -29,6 +29,7 @@ export default class MariaDB extends SQL {
       throw err;
     }
 
+    this.query_string = ``;
     this.conn.release();
 
     return results;

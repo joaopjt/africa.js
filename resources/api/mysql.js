@@ -12,11 +12,17 @@ export default class MySQL extends SQL {
     });
   }
 
-  query() {
-    this.conn.query(this.query_string, function (error, results, fields) {
-      if (error) throw error;
+  async query() {
+    let results = null;
 
-      return results;
+    await this.conn.query(this.query_string, function (error, r, fields) {
+      if (error) throw error;
+  
+      results = r;
     });
+
+    this.query_string = ``;
+
+    return results;
   }
 }

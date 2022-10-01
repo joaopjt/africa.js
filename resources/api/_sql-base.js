@@ -1,13 +1,12 @@
 export default class SQL {
   constructor() {
-    this.table = '';
-    this.collumns = '*';
-    this.where = ``;
-    this.query_string = `SELECT ${this.collumns} FROM ${this.table}`;
+    this.query_string = ``;
   }
 
-  select(collumns) {
-    if (collumns) this.collumns = collumns;
+  select(collumns = '*') {
+    if (!collumns) throw new Error('Expected collumns as first paramenter, but none was given.');
+
+    this.query_string += `SELECT ${collumns}`;
 
     return this;
   }
@@ -39,21 +38,21 @@ export default class SQL {
 
     Object.keys(values_object).forEach((key, index) => {
       let collumn = key;
-      if (index + 1 === Object.keys(values_object).length) collumn += ',';
+      if (Object.keys(values_object).length > index + 1) collumn += ',';
 
       collumns += collumn;
     });
 
-    Object.values(values_object).forEach((key, index) => {
-      let value = key;
-      if (index + 1 === Object.keys(values_object).length) value += ',';
+    Object.values(values_object).forEach((value, index) => {
+      value = `'${value}'`
+      if (Object.keys(values_object).length > index + 1) value += ',';
 
       values += value;
     });
 
     this.query_string = `INSERT INTO ${table_name} (${collumns}) VALUES (${values})`;
 
-    return this || this.query();
+    return this;
   }
 
   drop(table_name) {
@@ -61,7 +60,7 @@ export default class SQL {
 
     this.query_string = `DROP TABLE ${table_name}`;
 
-    return this || this.query();
+    return this;
   }
 
   delete(table_name) {
@@ -69,7 +68,7 @@ export default class SQL {
 
     this.query_string = `DELETE FROM ${table_name}`;
 
-    return this || this.query();
+    return this;
   }
 
   restrict() {
@@ -87,9 +86,9 @@ export default class SQL {
   from(table) {
     if (!table) throw new Error('Expected table name but none was given.');
 
-    this.table = table;
+    this.query_string += ` FROM ${table}`;
 
-    return this || this.query(); 
+    return this; 
   }
 
   where_is_allocated() {
@@ -108,7 +107,7 @@ export default class SQL {
       this.query_string += where;
     }
 
-    return this || this.query();
+    return this;
   }
 
   order_by(collumn) {
@@ -116,7 +115,7 @@ export default class SQL {
 
     this.query_string += order_by;
 
-    return this || this.query();
+    return this;
   }
 
   asc() {
@@ -124,7 +123,7 @@ export default class SQL {
 
     this.query_string += asc;
 
-    return this || this.query();
+    return this;
   }
 
   desc() {
@@ -132,7 +131,7 @@ export default class SQL {
 
     this.query_string += desc;
 
-    return this || this.query();
+    return this;
   }
 
   join(table, object) {
@@ -147,7 +146,7 @@ export default class SQL {
 
     this.query_string += join;
 
-    return this || this.query();
+    return this;
   }
 
   left_join(table, object) {
@@ -162,7 +161,7 @@ export default class SQL {
 
     this.query_string += join;
 
-    return this || this.query();
+    return this;
   }
 
   right_join(table, object) {
@@ -177,7 +176,7 @@ export default class SQL {
 
     this.query_string += join;
 
-    return this || this.query();
+    return this;
   }
 
   outer_join(table, object) {
@@ -192,7 +191,7 @@ export default class SQL {
 
     this.query_string += join;
 
-    return this || this.query();
+    return this;
   }
 
   exists() {

@@ -13,15 +13,19 @@ export default class PostgreSQL extends SQL {
     });
   }
 
-  query() {
+  async query() {
+    let results = null;
     this.client.connect();
 
     this.client.query(this.query_string)
       .then(res => {
-        return res.rows[0];
+        results = res;
       })
       .catch(err => { throw err });
 
+    this.query_string = ``;
     this.client.release();
+
+    return results;
   }
 }

@@ -20,8 +20,8 @@ export default class SQLServer extends SQL {
   }
 
   async query() {
-    let sql = mssql.connect(this.config);
     let result = null;
+    let sql = mssql.connect(this.config);
 
     try {
       result = await sql.query(this.query_string);
@@ -29,6 +29,7 @@ export default class SQLServer extends SQL {
       throw err;
     }
 
+    this.query_string = ``;
     return result;
   }
 }

@@ -23,6 +23,7 @@ export default class SQLite extends SQL {
       throw err;
     }
 
+    this.query_string = ``;
     return result;
   }
 }

@@ -21,6 +21,21 @@ Or, if you already have a ***.env*** file, you can just run:
 $ africa init
 ```
 
+### The ```.env``` file
+
+Heres a example of how the ***.env*** file show be like:
+
+```
+AFRICA_MIGRATIONS='migrations/'
+AFRICA_SEEDS='seeds/'
+
+DB_CLIENT='mysql'
+DB_HOST='localhost'
+DB_USER='root'
+DB_PASS=''
+DB_NAME='africa'
+```
+
 ### Create Migration
 
 To create a migration, you need to run:
