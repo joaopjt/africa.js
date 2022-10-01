@@ -6,7 +6,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 import { uglify } from 'rollup-plugin-uglify';
 
-const babelConfig = { babelrc: true, exclude: 'node_modules/**' };
+const babelConfig = { babelrc: false, babelHelpers: 'inline', exclude: 'node_modules/**' };
 const minifyConfig = { comments: false };
 
 export default {
@@ -18,16 +18,16 @@ export default {
   },
   interop: false,
   plugins: [
-    replace({
-      preventAssignment: true,
-      "process.env.NODE_ENV": JSON.stringify("development")
-    }),
+    // replace({
+    //   preventAssignment: true,
+    //   "process.env.NODE_ENV": JSON.stringify("development")
+    // }),
     babel(babelConfig),
-    resolve(),
-    commonjs({
-      include: '/node_modules/'
-    }),
-    json(),
+    // commonjs(),
+    // commonjs({
+    //   include: '/node_modules/'
+    // }),
+    // json(),
     minify(minifyConfig),
     uglify()
   ]

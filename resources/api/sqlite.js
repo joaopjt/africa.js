@@ -1,5 +1,5 @@
+const sqlite = require('sqlite3');
 import { open } from 'sqlite';
-import sqlite from 'sqlite3';
 import SQL from './_sql-base';
 
 export default class SQLite extends SQL { 

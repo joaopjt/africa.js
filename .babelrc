@@ -1,13 +1,9 @@
 {
-  // The below preset need to be installed
-  // and is automatically used after in node_modules,
-  // so we leave it commented.
-  // 
   "presets": [
     "@babel/preset-env"
   ],
   "plugins": [
-    "@babel/plugin-transform-runtime",
+    // "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-class-properties"
   ]
 }

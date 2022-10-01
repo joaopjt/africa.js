@@ -41,6 +41,7 @@
     "rollup-plugin-uglify": "^6.0.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.19.0",
     "colorette": "^2.0.19",
     "commander": "^9.3.0",
     "core-js": "^3.25.3",

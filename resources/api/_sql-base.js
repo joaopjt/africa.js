@@ -88,20 +88,16 @@ export default class SQL {
     if (this.query_string.search('WHERE')) return true;
   }
 
-  where(query) {
-    let conditions = '';
+  where(key, operator, value) {
+    let conditions = `${key} ${operator} ${value}`;
     const where = ` WHERE ${conditions}`;
 
     if (this.where_is_allocated()) this.query_string += 'AND';
-    
-    Object.keys(query).forEach((key, operator, value) => {
-      conditions += `${key} ${operator} ${value}, `;
-    });
 
-    if (!this.where_is_allocated()) {
-      this.query_string += where;
-    } else {
+    if (this.where_is_allocated()) {
       this.query_string += conditions;
+    } else {
+      this.query_string += where;
     }
 
     return this || this.query();
