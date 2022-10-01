@@ -82,9 +82,13 @@ The API follows the SQL syntax, so we get the same API methods for every databas
 Lets start with the connection over a MySQL client as a example:
 
 ```javascript
-import { Africa, MySQL } from 'africa.js';
+import { Africa, MariaDB, MySQL, PostgreSQL, SQLite, SQLServer } from 'africa.js';
 
 const mysql = new MySQL('localhost', 'root', 'root', 'password');
+const mariadb = new MariaDB('localhost', 'root', 'root', 'password');
+const postgre = new PostgreSQL('localhost', 'root', 'root', 'password');
+const sqlserver = new SQLServer('localhost', 'root', 'root', 'password');
+const sqlite = new SQLite('database_filename');
 ```
 
 ## Queries Avaiable
@@ -97,14 +101,15 @@ Create a new table:
       'name': new Africa().varchar(255).null(false).value,
       'age': new Africa().varchar(255).null(false).value,
       'email': new Africa().varchar(255).null(false).value
-    });
+    }).query();
 ```
 
 Read table from database:
 ```javascript
   mysql
     .select('id, name')
-    .from('table');
+    .from('table')
+    .query();
 ```
 
 Read table from database with clausules:
@@ -112,7 +117,19 @@ Read table from database with clausules:
   mysql
     .select('id, name')
     .from('table')
-    .where('collumn', 'operator', 'value');
+    .where('collumn', 'operator', 'value')
+    .query();
+```
+
+Read table from database with order by clausules:
+```javascript
+  mysql
+    .select('id, name')
+    .from('table')
+    .where('collumn', 'operator', 'value')
+    .order_by('collumn')
+    .desc()
+    .query();
 ```
 
 Insert in table:
@@ -121,7 +138,8 @@ Insert in table:
     .insert('table', [
       ['John', 21, 'john@doe.com'],
       ['Mary', 21, 'mary@example.com'] 
-    ]);
+    ])
+    .query();
 ```
 
 Read table from database with INNER JOIN:
@@ -131,7 +149,8 @@ Read table from database with INNER JOIN:
     .from('table')
     .join('table2', {
       foo: 'bar'
-    });
+    })
+    .query();
 ```
 
 Read table from database with LEFT JOIN:
@@ -141,7 +160,8 @@ Read table from database with LEFT JOIN:
     .from('table')
     .left_join('table2', {
       foo: 'bar'
-    });
+    })
+    .query();
 ```
 
 Read table from database with RIGHT JOIN:
@@ -151,7 +171,8 @@ Read table from database with RIGHT JOIN:
     .from('table')
     .right_join('table2', {
       foo: 'bar'
-    });
+    })
+    .query();
 ```
 
 Read table from database with OUTER FULL JOIN:
@@ -161,13 +182,15 @@ Read table from database with OUTER FULL JOIN:
     .from('table')
     .outer_join('table2', {
       foo: 'bar'
-    });
+    })
+    .query();
 ```
 
 RAW SQL:
 ```javascript
   mysql
-    .raw('SELECT * FROM table_name');
+    .raw('SELECT * FROM table_name')
+    .query();
 ```
 
 ## COPYRIGHT

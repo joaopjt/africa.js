@@ -7,7 +7,6 @@ export default class SQLite extends SQL {
     super();
 
     this.db = undefined;
-    this.connect();
   }
 
   async connect() {
@@ -17,6 +16,8 @@ export default class SQLite extends SQL {
   async query() {
     let result = null;
 
+    this.connect();
+    
     try {
       result = await this.db.exec(this.query_string);
     } catch (err) {
