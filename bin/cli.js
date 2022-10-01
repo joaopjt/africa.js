@@ -187,6 +187,8 @@ program.command('migrate')
             console.log(green(`'${file}' migrated with success!`));
           }
         });
+
+        console.log(green('All migrations files readed with success!'));
       });
     }
   });
@@ -211,6 +213,8 @@ program.command('seed')
             console.log(green(`'${file}' seeded with success!`));
           }
         });
+
+        console.log(green('All seeders files readed with success!'));
       });
     }
   });
@@ -231,7 +235,7 @@ program.command('rollback')
 
           db.delete().from('_africa_migrations').where({ name: file }).query();
 
-          console.log(green(`Rollback of '${file}' conclued with success.`));
+          console.log(green(`Rollbacked '${file}'.`));
         });
       });
 

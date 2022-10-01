@@ -1,28 +1,26 @@
-import mysql from 'mysql';
+import mysql from 'mysql2/promise';
 import SQL from './_sql-base';
 
 export default class MySQL extends SQL { 
   constructor(host, user, password, database) {
     super();
-    this.conn = mysql.createPool({
+    this.config = {
       host,
       user,
       password,
       database
-    });
+    };
   }
 
   async query() {
     let results = null;
 
-    await this.conn.query(this.query_string, function (error, r, fields) {
-      if (error) throw error;
-  
-      results = r;
-    });
+    this.conn = await mysql.createConnection(this.config);
+
+    results = await this.conn.query(this.query_string);
 
     this.query_string = ``;
 
-    return results;
+    return results[0];
   }
 }
