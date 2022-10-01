@@ -3,10 +3,11 @@
   // and is automatically used after in node_modules,
   // so we leave it commented.
   // 
-  // "presets": [
-  //   "@parcel/babel-preset-env"
-  // ],
+  "presets": [
+    "@babel/preset-env"
+  ],
   "plugins": [
+    "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-class-properties"
   ]
 }
