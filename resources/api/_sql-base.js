@@ -55,6 +55,31 @@ export default class SQL {
     return this;
   }
 
+  update(table_name, values_object) {
+    let collumns = '';
+    let values = '';
+    if (!table_name) throw new Error('Expected table name but none was given.');
+    if (!values_object) throw new Error('Expected values object as a second parameter, but none was given.');
+
+    Object.keys(values_object).forEach((key, index) => {
+      let collumn = key;
+      if (Object.keys(values_object).length > index + 1) collumn += ',';
+
+      collumns += collumn;
+    });
+
+    Object.values(values_object).forEach((value, index) => {
+      value = `'${value}'`
+      if (Object.keys(values_object).length > index + 1) value += ',';
+
+      values += value;
+    });
+
+    this.query_string = `UPDATE ${table_name} SET (${collumns}) VALUES (${values})`;
+
+    return this;
+  }
+
   drop(table_name) {
     if (!table_name) throw new Error('Expected table name but none was given.');
 
@@ -140,8 +165,8 @@ export default class SQL {
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
-    Object.keys(object).forEach((key, value) => {
-      relationship += `${this.table}.${key} = ${table}.${value}`;
+    Object.keys(object).forEach((key_column, value_collumn) => {
+      relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
     });
 
     this.query_string += join;
@@ -155,8 +180,8 @@ export default class SQL {
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
-    Object.keys(object).forEach((key, value) => {
-      relationship += `${this.table}.${key} = ${table}.${value}`;
+    Object.keys(object).forEach((key_column, value_collumn) => {
+      relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
     });
 
     this.query_string += join;
@@ -170,8 +195,8 @@ export default class SQL {
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
-    Object.keys(object).forEach((key, value) => {
-      relationship += `${this.table}.${key} = ${table}.${value}`;
+    Object.keys(object).forEach((key_column, value_collumn) => {
+      relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
     });
 
     this.query_string += join;
@@ -185,8 +210,8 @@ export default class SQL {
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
-    Object.keys(object).forEach((key, value) => {
-      relationship += `${this.table}.${key} = ${table}.${value}`;
+    Object.keys(object).forEach((key_column, value_collumn) => {
+      relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
     });
 
     this.query_string += join;

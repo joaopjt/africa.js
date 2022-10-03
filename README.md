@@ -107,8 +107,39 @@ Create a new table:
 Read table from database:
 ```javascript
   let query = await mysql
-    .select('id, name')
-    .from('table')
+    .select() // default brings all records
+    .from('table_name')
+    .query();
+```
+
+Insert into table:
+```javascript
+  await mysql
+    .insert('table_name',
+      {
+        name: 'John Doe',
+        age: 21,
+        email: 'john@doe.com'
+      }
+    )
+    .query();
+```
+
+Update record in a table:
+```javascript
+  await mysql
+    .update('table_name', {
+      name: 'Jane Doe'
+    })
+    .where('name', '=', 'John Doe')
+    .query();
+```
+
+Delete in table:
+```javascript
+  await mysql
+    .delete('table_name')
+    .cascade()
     .query();
 ```
 
@@ -116,7 +147,7 @@ Read table from database with clausules:
 ```javascript
   let query = await mysql
     .select('id, name')
-    .from('table')
+    .from('table_name')
     .where('collumn', 'operator', 'value')
     .query();
 ```
@@ -125,20 +156,10 @@ Read table from database with order by clausules:
 ```javascript
   let query = await mysql
     .select('id, name')
-    .from('table')
+    .from('table_name')
     .where('collumn', 'operator', 'value')
     .order_by('collumn')
     .desc()
-    .query();
-```
-
-Insert in table:
-```javascript
-  let query = await mysql
-    .insert('table', [
-      ['John', 21, 'john@doe.com'],
-      ['Mary', 21, 'mary@example.com'] 
-    ])
     .query();
 ```
 
@@ -146,7 +167,7 @@ Read table from database with INNER JOIN:
 ```javascript
   let query = await mysql
     .select('id, name')
-    .from('table')
+    .from('table_name')
     .join('table2', {
       foo: 'bar'
     })
@@ -157,7 +178,7 @@ Read table from database with LEFT JOIN:
 ```javascript
   let query = await mysql
     .select('id, name')
-    .from('table')
+    .from('table_name')
     .left_join('table2', {
       foo: 'bar'
     })
@@ -168,7 +189,7 @@ Read table from database with RIGHT JOIN:
 ```javascript
   let query = await mysql
     .select('id, name')
-    .from('table')
+    .from('table_name')
     .right_join('table2', {
       foo: 'bar'
     })
@@ -179,7 +200,7 @@ Read table from database with OUTER FULL JOIN:
 ```javascript
   let query = await mysql
     .select('id, name')
-    .from('table')
+    .from('table_name')
     .outer_join('table2', {
       foo: 'bar'
     })
