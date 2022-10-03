@@ -91,7 +91,21 @@ const sqlserver = new SQLServer('host', 'user', 'password', 'database');
 const sqlite = new SQLite('path/to/database_filename');
 ```
 
-## Queries Avaiable
+## The Querie Builder
+
+Gets SQL value of the query:
+```javascript
+  mysql
+    .create('table_name', {
+      'id': new Africa().int().null(false).primary_key().auto_increment().value,
+      'name': new Africa().varchar(255).null(false).value,
+      'age': new Africa().varchar(255).null(false).value,
+      'email': new Africa().varchar(255).null(false).value
+    })
+    .value();
+```
+
+## Running queries
 
 Create a new table:
 ```javascript
@@ -101,7 +115,8 @@ Create a new table:
       'name': new Africa().varchar(255).null(false).value,
       'age': new Africa().varchar(255).null(false).value,
       'email': new Africa().varchar(255).null(false).value
-    }).query();
+    })
+    .query();
 ```
 
 Read table from database:

@@ -3,6 +3,10 @@ export default class SQL {
     this.query_string = ``;
   }
 
+  value() {
+    return this.query_string;
+  }
+
   select(collumns = '*') {
     if (!collumns) throw new Error('Expected collumns as first paramenter, but none was given.');
 
