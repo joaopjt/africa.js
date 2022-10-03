@@ -95,7 +95,7 @@ const sqlite = new SQLite('path/to/database_filename');
 
 Create a new table:
 ```javascript
-  mysql
+  let create_table = await mysql
     .create('table_name', {
       'id': new Africa().int().null(false).primary_key().auto_increment().value,
       'name': new Africa().varchar(255).null(false).value,
@@ -106,7 +106,7 @@ Create a new table:
 
 Read table from database:
 ```javascript
-  mysql
+  let query = await mysql
     .select('id, name')
     .from('table')
     .query();
@@ -114,7 +114,7 @@ Read table from database:
 
 Read table from database with clausules:
 ```javascript
-  mysql
+  let query = await mysql
     .select('id, name')
     .from('table')
     .where('collumn', 'operator', 'value')
@@ -123,7 +123,7 @@ Read table from database with clausules:
 
 Read table from database with order by clausules:
 ```javascript
-  mysql
+  let query = await mysql
     .select('id, name')
     .from('table')
     .where('collumn', 'operator', 'value')
@@ -134,7 +134,7 @@ Read table from database with order by clausules:
 
 Insert in table:
 ```javascript
-  mysql
+  let query = await mysql
     .insert('table', [
       ['John', 21, 'john@doe.com'],
       ['Mary', 21, 'mary@example.com'] 
@@ -144,7 +144,7 @@ Insert in table:
 
 Read table from database with INNER JOIN:
 ```javascript
-  mysql
+  let query = await mysql
     .select('id, name')
     .from('table')
     .join('table2', {
@@ -155,7 +155,7 @@ Read table from database with INNER JOIN:
 
 Read table from database with LEFT JOIN:
 ```javascript
-  mysql
+  let query = await mysql
     .select('id, name')
     .from('table')
     .left_join('table2', {
@@ -166,7 +166,7 @@ Read table from database with LEFT JOIN:
 
 Read table from database with RIGHT JOIN:
 ```javascript
-  mysql
+  let query = await mysql
     .select('id, name')
     .from('table')
     .right_join('table2', {
@@ -177,7 +177,7 @@ Read table from database with RIGHT JOIN:
 
 Read table from database with OUTER FULL JOIN:
 ```javascript
-  mysql
+  let query = await mysql
     .select('id, name')
     .from('table')
     .outer_join('table2', {
@@ -188,7 +188,7 @@ Read table from database with OUTER FULL JOIN:
 
 RAW SQL:
 ```javascript
-  mysql
+  let query = await mysql
     .raw('SELECT * FROM table_name')
     .query();
 ```
