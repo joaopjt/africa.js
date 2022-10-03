@@ -165,13 +165,14 @@ export default class SQL {
 
   join(table, object) {
     let relationship = '';
-    const join = ` INNER JOIN ${table} ON ${relationship}`;
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
     Object.keys(object).forEach((key_column, value_collumn) => {
       relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
     });
+
+    let join = ` INNER JOIN ${table} ON ${relationship}`;
 
     this.query_string += join;
 
@@ -180,13 +181,14 @@ export default class SQL {
 
   left_join(table, object) {
     let relationship = '';
-    const join = ` LEFT JOIN ${table} ON ${relationship}`;
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
     Object.keys(object).forEach((key_column, value_collumn) => {
       relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
     });
+
+    let join = ` LEFT JOIN ${table} ON ${relationship}`;
 
     this.query_string += join;
 
@@ -195,13 +197,14 @@ export default class SQL {
 
   right_join(table, object) {
     let relationship = '';
-    const join = ` RIGHT JOIN ${table} ON ${relationship}`;
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
     Object.keys(object).forEach((key_column, value_collumn) => {
       relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
     });
+
+    let join = ` RIGHT JOIN ${table} ON ${relationship}`;
 
     this.query_string += join;
 
@@ -210,13 +213,15 @@ export default class SQL {
 
   outer_join(table, object) {
     let relationship = '';
-    const join = ` OUTER FULL JOIN ${table} ON ${relationship}`;
+    
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
     Object.keys(object).forEach((key_column, value_collumn) => {
       relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
     });
+
+    let join = ` FULL OUTER JOIN ${table} ON ${relationship}`;
 
     this.query_string += join;
 

@@ -96,7 +96,7 @@ const sqlite = new SQLite('path/to/database_filename');
 Gets SQL value of the query:
 ```javascript
   mysql
-    .create('table_name', {
+    .create('news', {
       'id': new Africa().int().null(false).primary_key().auto_increment().value,
       'name': new Africa().varchar(255).null(false).value,
       'age': new Africa().varchar(255).null(false).value,
@@ -110,7 +110,7 @@ Gets SQL value of the query:
 Create a new table:
 ```javascript
   await mysql
-    .create('table_name', {
+    .create('news', {
       'id': new Africa().int().null(false).primary_key().auto_increment().value,
       'name': new Africa().varchar(255).null(false).value,
       'age': new Africa().varchar(255).null(false).value,
@@ -123,14 +123,14 @@ Read table from database:
 ```javascript
   let query = await mysql
     .select() // default brings all records
-    .from('table_name')
+    .from('news')
     .query();
 ```
 
 Insert into table:
 ```javascript
   await mysql
-    .insert('table_name',
+    .insert('news',
       {
         name: 'John Doe',
         age: 21,
@@ -143,7 +143,7 @@ Insert into table:
 Update record in a table:
 ```javascript
   await mysql
-    .update('table_name', {
+    .update('news', {
       name: 'Jane Doe'
     })
     .where('name', '=', 'John Doe')
@@ -153,7 +153,7 @@ Update record in a table:
 Delete in table:
 ```javascript
   await mysql
-    .delete('table_name')
+    .delete('news')
     .cascade()
     .query();
 ```
@@ -162,7 +162,7 @@ Read table from database with clausules:
 ```javascript
   let query = await mysql
     .select('id, name')
-    .from('table_name')
+    .from('news')
     .where('collumn', 'operator', 'value')
     .query();
 ```
@@ -171,7 +171,7 @@ Read table from database with order by clausules:
 ```javascript
   let query = await mysql
     .select('id, name')
-    .from('table_name')
+    .from('news')
     .where('collumn', 'operator', 'value')
     .order_by('collumn')
     .desc()
@@ -182,42 +182,44 @@ Read table from database with INNER JOIN:
 ```javascript
   let query = await mysql
     .select('id, name')
-    .from('table_name')
-    .join('table2', {
-      foo: 'bar'
+    .from('news')
+    .join('authors', {
+      author_name: 'author'
     })
-    .query();
+    .query(); // { id: 1, title: 'example', author: 'Author Name' }
 ```
 
 Read table from database with LEFT JOIN:
 ```javascript
   let query = await mysql
-    .select('id, name')
-    .from('table_name')
-    .left_join('table2', {
-      foo: 'bar'
+    .select('News.id, News.title, Authors.name')
+    .as('id', 'title', 'author')
+    .from('news')
+    .left_join('authors', {
+      'News.author': 'Authors.id'
     })
-    .query();
+    .query(); // { 'id: 1, title: 'example', author: 'Author Name' }
 ```
 
 Read table from database with RIGHT JOIN:
 ```javascript
   let query = await mysql
-    .select('id, name')
-    .from('table_name')
-    .right_join('table2', {
-      foo: 'bar'
+    .select('News.id, News.title, News.content')
+    .as('id', 'title', 'content')
+    .from('news_categories')
+    .right_join('news', {
+      'NewsCategories.id': 'News.category_id'
     })
-    .query();
+    .query(); // { 'id: 1, title: 'example', author: 'Author Name' }
 ```
 
-Read table from database with OUTER FULL JOIN:
+Read table from database with FULL OUTER JOIN:
 ```javascript
   let query = await mysql
-    .select('id, name')
-    .from('table_name')
+    .select() // all collumns by default
+    .from('table1')
     .outer_join('table2', {
-      foo: 'bar'
+      'table1.collumn': 'table2.collumn'
     })
     .query();
 ```
@@ -225,7 +227,7 @@ Read table from database with OUTER FULL JOIN:
 RAW SQL:
 ```javascript
   let query = await mysql
-    .raw('SELECT * FROM table_name')
+    .raw('SELECT * FROM news')
     .query();
 ```
 
