@@ -168,8 +168,8 @@ export default class SQL {
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
-    Object.keys(object).forEach((key_column, value_collumn) => {
-      relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
+    Object.keys(object).forEach((key, value) => {
+      relationship += `${key} = ${value}`;
     });
 
     let join = ` INNER JOIN ${table} ON ${relationship}`;
@@ -184,8 +184,8 @@ export default class SQL {
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
-    Object.keys(object).forEach((key_column, value_collumn) => {
-      relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
+    Object.keys(object).forEach((key, value) => {
+      relationship += `${key} = ${value}`;
     });
 
     let join = ` LEFT JOIN ${table} ON ${relationship}`;
@@ -200,8 +200,8 @@ export default class SQL {
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
-    Object.keys(object).forEach((key_column, value_collumn) => {
-      relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
+    Object.keys(object).forEach((key, value) => {
+      relationship += `${key} = ${value}`;
     });
 
     let join = ` RIGHT JOIN ${table} ON ${relationship}`;
@@ -217,8 +217,8 @@ export default class SQL {
     if (!table) throw new Error('Expected table name as first paramenter, but none was given.');
     if (!object) throw new Error('Expected values object as second paramenter, but none was given.');
 
-    Object.keys(object).forEach((key_column, value_collumn) => {
-      relationship += `${this.table}.${key_column} = ${table}.${value_collumn}`;
+    Object.keys(object).forEach((key, value) => {
+      relationship += `${key} = ${value}`;
     });
 
     let join = ` FULL OUTER JOIN ${table} ON ${relationship}`;
