@@ -6,5 +6,7 @@ exports.up = (db, Africa) => {
 }
 
 exports.down = (db, Africa) => {
-  db.drop('table_name');
+  db.drop('table_name')
+    .cascade()
+    .query();
 };
