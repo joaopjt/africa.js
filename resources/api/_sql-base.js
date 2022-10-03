@@ -15,6 +15,14 @@ export default class SQL {
     return this;
   }
 
+  as(collumns) {
+    if (!collumns) throw new Error('Expected collumns as paramenter, but none was given.');
+
+    this.query_string += ` AS ${collumns}`;
+
+    return this; 
+  }
+
   create(table_name, collumns_object) {
     let collumns = '';
     let count = 0;
