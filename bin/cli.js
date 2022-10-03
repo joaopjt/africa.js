@@ -206,7 +206,9 @@ program.command('seed')
           if (migrated_seeds === null || !migrated_seeds.find(s => s.name === file)) {
             let { table, seed } = require(process.cwd() + '/' + process.env['AFRICA_SEEDS'] + '/' + file);
 
-            seed.forEach((s) => { db.insert(table, s); });
+            seed.forEach((s) => { 
+              db.insert(table, s).query();
+            });
 
             db.insert('_africa_seeders', { name: file }).query();
 
@@ -214,7 +216,7 @@ program.command('seed')
           }
         });
 
-        console.log(green('All seeders files readed with success!'));
+        console.log(green('All seeders finished with success!'));
       });
     }
   });
