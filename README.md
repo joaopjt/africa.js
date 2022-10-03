@@ -29,7 +29,7 @@ Heres a example of how the ***.env*** file show be like:
 AFRICA_MIGRATIONS='migrations/'
 AFRICA_SEEDS='seeds/'
 
-DB_CLIENT='mysql'
+DB_CLIENT='mysql|mariadb|postgresql|sqlite|sqlserver'
 DB_HOST='localhost'
 DB_USER='root'
 DB_PASS=''
@@ -84,11 +84,11 @@ Lets start with the connection over a MySQL client as a example:
 ```javascript
 import { Africa, MariaDB, MySQL, PostgreSQL, SQLite, SQLServer } from 'africa.js';
 
-const mysql = new MySQL('localhost', 'root', 'root', 'password');
-const mariadb = new MariaDB('localhost', 'root', 'root', 'password');
-const postgre = new PostgreSQL('localhost', 'root', 'root', 'password');
-const sqlserver = new SQLServer('localhost', 'root', 'root', 'password');
-const sqlite = new SQLite('database_filename');
+const mysql = new MySQL('host', 'user', 'password', 'database');
+const mariadb = new MariaDB('host', 'user', 'password', 'database');
+const postgre = new PostgreSQL('host', 'user', 'password', 'database');
+const sqlserver = new SQLServer('host', 'user', 'password', 'database');
+const sqlite = new SQLite('path/to/database_filename');
 ```
 
 ## Queries Avaiable
