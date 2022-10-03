@@ -95,7 +95,7 @@ const sqlite = new SQLite('path/to/database_filename');
 
 Create a new table:
 ```javascript
-  let create_table = await mysql
+  await mysql
     .create('table_name', {
       'id': new Africa().int().null(false).primary_key().auto_increment().value,
       'name': new Africa().varchar(255).null(false).value,
