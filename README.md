@@ -147,6 +147,7 @@ Update record in a table:
       name: 'Jane Doe'
     })
     .where('name', '=', 'John Doe')
+    .where('email', '=', 'john@doe.com')
     .query();
 ```
 
