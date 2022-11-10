@@ -28,4 +28,8 @@ export default class PostgreSQL extends SQL {
 
     return results;
   }
+
+  async [Symbol.chainEnd]() {
+    return await this.query();
+  }
 }

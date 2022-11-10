@@ -27,4 +27,8 @@ export default class SQLite extends SQL {
     this.query_string = ``;
     return result;
   }
+
+  async [Symbol.chainEnd]() {
+    return await this.query();
+  }
 }

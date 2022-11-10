@@ -34,4 +34,8 @@ export default class MariaDB extends SQL {
 
     return results;
   }
+
+  async [Symbol.chainEnd]() {
+    return await this.query();
+  }
 }

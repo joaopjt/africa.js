@@ -24,105 +24,105 @@ class Africa {
     this.spacer();
     this.value += `CHAR(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   varchar(size = 255) {
     this.spacer();
     this.value += `VARCHAR(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   binary(size = 8000) {
     this.spacer();
     this.value += `BINARY(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   varbinary(size = 2000000000) {
     this.spacer();
     this.value += `VARBINARY(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   tinyblob() {
     this.spacer();
     this.value += `TINYBLOB`;
 
-    return this || this.result();
+    return this;
   }
 
   tinytext() {
     this.spacer();
     this.value += `TINYTEXT`;
 
-    return this || this.result();
+    return this;
   }
 
   tinyint() {
     this.spacer();
     this.value += `TINYINT`;
 
-    return this || this.result();
+    return this;
   }
 
   bool() {
     this.spacer();
     this.value += `BOOL`;
 
-    return this || this.result();
+    return this;
   }
 
   boolean() {
     this.spacer();
     this.value += `BOOLEAN`;
 
-    return this || this.result();
+    return this;
   }
 
   smallint(size = 5) {
     this.spacer();
     this.value += `SMALLINT(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   mediumint(size = 8) {
     this.spacer();
     this.value += `MEDIUMINT(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   int(size = 11) {
     this.spacer();
     this.value += `INT(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   integer(size = 11) {
     this.spacer();
     this.value += `INTEGER(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   bigint(size = 255) {
     this.spacer();
     this.value += `BIGINT(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   float(size = 23) {
     this.spacer();
     this.value += `FLOAT(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   double(size = 16, d = 4) {
@@ -130,7 +130,7 @@ class Africa {
     this.value += `DOUBLE(${size}
      ${d})`;
 
-    return this || this.result();
+    return this;
   }
 
   double_precision(size = 0, d = 0) {
@@ -138,7 +138,7 @@ class Africa {
     this.value += `DOUBLE PRECISION(${size}
      ${d})`;
 
-    return this || this.result();
+    return this;
   }
 
   decimal(size = 10, d = 0) {
@@ -146,70 +146,70 @@ class Africa {
     this.value += `DECIMAL(${size}
      ${d})`;
 
-    return this || this.result();
+    return this;
   }
 
   text() {
     this.spacer();
     this.value += `TEXT`;
 
-    return this || this.result();
+    return this;
   }
 
   bit(size = 1) {
     this.spacer();
     this.value += `BIT(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   blob(size = 65535) {
     this.spacer();
     this.value += `BLOB(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   mediumtext(size = 16777215) {
     this.spacer();
     this.value += `MEDIUMTEXT(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   mediumblob(size = 16777215) {
     this.spacer();
     this.value += `MEDIUMBLOB(${size})`;
 
-    return this || this.result();
+    return this;
   }
 
   longtext() {
     this.spacer();
     this.value += `LONGTEXT`;
 
-    return this || this.result();
+    return this;
   }
 
   longblob() {
     this.spacer();
     this.value += `LONGBLOB`;
 
-    return this || this.result();
+    return this;
   }
 
   enum(list) {
     this.spacer();
     this.value += `ENUM(${list})`;
 
-    return this || this.result();
+    return this;
   }
 
   set(list) {
     this.spacer();
     this.value += `SET(${list})`;
 
-    return this || this.result();
+    return this;
   }
 
   null(n = true) {
@@ -218,7 +218,7 @@ class Africa {
 
     this.value += `NULL`;
 
-    return this || this.result();
+    return this;
   }
 
   not_null() {
@@ -226,63 +226,67 @@ class Africa {
 
     this.value += `NOT NULL`;
 
-    return this || this.result();
+    return this;
   }
 
   primary_key() {
     this.spacer();
     this.value += 'PRIMARY KEY';
 
-    return this || this.result();
+    return this;
   }
 
   date() {
     this.spacer();
     this.value += 'DATE';
 
-    return this || this.result();
+    return this;
   }
 
   datetime(format = 'YYYY-MM-DD hh:mm:ss') {
     this.spacer();
     this.value += `DATETIME(${format})`;
 
-    return this || this.result();
+    return this;
   }
 
   timestamp(format = 'YYYY-MM-DD hh:mm:ss') {
     this.spacer();
     this.value += `TIMESTAMP(${format})`;
 
-    return this || this.result();
+    return this;
   }
 
   time(format = 'hh:mm:ss') {
     this.spacer();
     this.value += `TIME(${format})`;
 
-    return this || this.result();
+    return this;
   }
 
   year() {
     this.spacer();
     this.value += `YEAR`;
 
-    return this || this.result();
+    return this;
   }
 
   auto_increment() {
     this.spacer();
     this.value += `AUTO_INCREMENT`;
 
-    return this || this.result();
+    return this;
   }
 
   default(value) {
     this.spacer();
     this.value += (value) ? `DEFAULT ${value}` : `DEFAULT`;
 
-    return this || this.result();
+    return this;
+  }
+
+  [Symbol.chainEnd]() {
+    return this.value;
   }
 };
 

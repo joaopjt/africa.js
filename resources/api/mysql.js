@@ -23,4 +23,8 @@ export default class MySQL extends SQL {
 
     return results[0];
   }
+
+  async [Symbol.chainEnd]() {
+    return await this.query();
+  }
 }

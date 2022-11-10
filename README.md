@@ -97,12 +97,12 @@ Gets SQL value of the query:
 ```javascript
   mysql
     .create('news', {
-      'id': new Africa().int().null(false).primary_key().auto_increment().value,
-      'name': new Africa().varchar(255).null(false).value,
-      'age': new Africa().varchar(255).null(false).value,
-      'email': new Africa().varchar(255).null(false).value
+      'id': new Africa().int().null(false).primary_key().auto_increment(),
+      'name': new Africa().varchar(255).null(false),
+      'age': new Africa().varchar(255).null(false),
+      'email': new Africa().varchar(255).null(false)
     })
-    .value();
+    ();
 ```
 
 ## Running queries
@@ -111,20 +111,18 @@ Create a new table:
 ```javascript
   await mysql
     .create('news', {
-      'id': new Africa().int().null(false).primary_key().auto_increment().value,
-      'name': new Africa().varchar(255).null(false).value,
-      'age': new Africa().varchar(255).null(false).value,
-      'email': new Africa().varchar(255).null(false).value
-    })
-    .query();
+      'id': new Africa().int().null(false).primary_key().auto_increment(),
+      'name': new Africa().varchar(255).null(false),
+      'age': new Africa().varchar(255).null(false),
+      'email': new Africa().varchar(255).null(false)
+    });
 ```
 
 Read table from database:
 ```javascript
   let query = await mysql
     .select() // default brings all records
-    .from('news')
-    .query();
+    .from('news');
 ```
 
 Insert into table:
@@ -136,8 +134,7 @@ Insert into table:
         age: 21,
         email: 'john@doe.com'
       }
-    )
-    .query();
+    );
 ```
 
 Update record in a table:
@@ -147,16 +144,14 @@ Update record in a table:
       name: 'Jane Doe'
     })
     .where('name', '=', 'John Doe')
-    .where('email', '=', 'john@doe.com')
-    .query();
+    .where('email', '=', 'john@doe.com');
 ```
 
 Delete in table:
 ```javascript
   await mysql
     .delete('news')
-    .cascade()
-    .query();
+    .cascade();
 ```
 
 Read table from database with clausules:
@@ -164,8 +159,7 @@ Read table from database with clausules:
   let query = await mysql
     .select('id, name')
     .from('news')
-    .where('collumn', 'operator', 'value')
-    .query();
+    .where('collumn', 'operator', 'value');
 ```
 
 Read table from database with order by clausules:
@@ -175,8 +169,7 @@ Read table from database with order by clausules:
     .from('news')
     .where('collumn', 'operator', 'value')
     .order_by('collumn')
-    .desc()
-    .query();
+    .desc();
 ```
 
 Read table from database with INNER JOIN:
@@ -186,8 +179,7 @@ Read table from database with INNER JOIN:
     .from('news')
     .join('authors', {
       author_name: 'author'
-    })
-    .query(); // { id: 1, title: 'example', author: 'Author Name' }
+    }); // { id: 1, title: 'example', author: 'Author Name' }
 ```
 
 Read table from database with LEFT JOIN:
@@ -198,8 +190,7 @@ Read table from database with LEFT JOIN:
     .from('news')
     .left_join('authors', {
       'News.author': 'Authors.id'
-    })
-    .query(); // { 'id: 1, title: 'example', author: 'Author Name' }
+    }); // { 'id: 1, title: 'example', author: 'Author Name' }
 ```
 
 Read table from database with RIGHT JOIN:
@@ -210,8 +201,7 @@ Read table from database with RIGHT JOIN:
     .from('news_categories')
     .right_join('news', {
       'NewsCategories.id': 'News.category_id'
-    })
-    .query(); // { 'id: 1, title: 'example', author: 'Author Name' }
+    }); // { 'id: 1, title: 'example', author: 'Author Name' }
 ```
 
 Read table from database with FULL OUTER JOIN:
@@ -221,15 +211,13 @@ Read table from database with FULL OUTER JOIN:
     .from('table1')
     .outer_join('table2', {
       'table1.collumn': 'table2.collumn'
-    })
-    .query();
+    });
 ```
 
 RAW SQL:
 ```javascript
   let query = await mysql
-    .raw('SELECT * FROM news')
-    .query();
+    .raw('SELECT * FROM news');
 ```
 
 ## COPYRIGHT
