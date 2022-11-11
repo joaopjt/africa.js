@@ -95,14 +95,13 @@ const sqlite = new SQLite('path/to/database_filename');
 
 Gets SQL value of the query:
 ```javascript
-  mysql
+  await mysql
     .create('news', {
       'id': new Africa().int().null(false).primary_key().auto_increment(),
       'name': new Africa().varchar(255).null(false),
       'age': new Africa().varchar(255).null(false),
       'email': new Africa().varchar(255).null(false)
-    })
-    ();
+    });
 ```
 
 ## Running queries
@@ -120,7 +119,7 @@ Create a new table:
 
 Read table from database:
 ```javascript
-  let query = await mysql
+  await mysql
     .select() // default brings all records
     .from('news');
 ```
@@ -156,7 +155,7 @@ Delete in table:
 
 Read table from database with clausules:
 ```javascript
-  let query = await mysql
+  await mysql
     .select('id, name')
     .from('news')
     .where('collumn', 'operator', 'value');
@@ -164,7 +163,7 @@ Read table from database with clausules:
 
 Read table from database with order by clausules:
 ```javascript
-  let query = await mysql
+  await mysql
     .select('id, name')
     .from('news')
     .where('collumn', 'operator', 'value')
@@ -174,7 +173,7 @@ Read table from database with order by clausules:
 
 Read table from database with INNER JOIN:
 ```javascript
-  let query = await mysql
+  await mysql
     .select('id, name')
     .from('news')
     .join('authors', {
@@ -184,7 +183,7 @@ Read table from database with INNER JOIN:
 
 Read table from database with LEFT JOIN:
 ```javascript
-  let query = await mysql
+  await mysql
     .select('News.id, News.title, Authors.name')
     .as('id', 'title', 'author')
     .from('news')
@@ -195,7 +194,7 @@ Read table from database with LEFT JOIN:
 
 Read table from database with RIGHT JOIN:
 ```javascript
-  let query = await mysql
+  await mysql
     .select('News.id, News.title, News.content')
     .as('id', 'title', 'content')
     .from('news_categories')
@@ -206,7 +205,7 @@ Read table from database with RIGHT JOIN:
 
 Read table from database with FULL OUTER JOIN:
 ```javascript
-  let query = await mysql
+  await mysql
     .select() // all collumns by default
     .from('table1')
     .outer_join('table2', {
@@ -216,7 +215,7 @@ Read table from database with FULL OUTER JOIN:
 
 RAW SQL:
 ```javascript
-  let query = await mysql
+  await mysql
     .raw('SELECT * FROM news');
 ```
 
