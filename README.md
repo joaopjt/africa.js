@@ -222,5 +222,3 @@ RAW SQL:
 ## COPYRIGHT
 
 MIT License.
-
-**Made with :hearts: by John.**
