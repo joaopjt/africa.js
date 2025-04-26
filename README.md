@@ -23,7 +23,7 @@ $ africa init
 
 ### The ```.env``` file
 
-Heres a example of how the ***.env*** file show be like:
+Heres a example of how the ***.env*** file should be like:
 
 ```
 AFRICA_MIGRATIONS='migrations/'
